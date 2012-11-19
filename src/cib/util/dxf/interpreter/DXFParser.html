@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>BNF for DXFParser.jj </TITLE>
+</HEAD>
+<BODY>
+<H1 ALIGN=CENTER>BNF for DXFParser.jj </H1>
+<H2 ALIGN=CENTER>TOKENS</H2>
+<TABLE>
+ <!-- Token -->
+ <TR>
+  <TD>
+   <PRE>
+&lt;DEFAULT&gt; TOKEN : {
+&lt;EOL: "\r\n"&gt;
+}
+
+   </PRE>
+  </TD>
+ </TR>
+ <!-- Token -->
+ <TR>
+  <TD>
+   <PRE>
+&lt;DEFAULT&gt; TOKEN : {
+&lt;SEC_START: ([" "])* "0" &lt;EOL&gt; "SECTION" &lt;EOL&gt;&gt;
+| &lt;SEC_END: ([" "])* "0" &lt;EOL&gt; "ENDSEC" &lt;EOL&gt;&gt;
+| &lt;FILE_EOF: ([" "])* "0" &lt;EOL&gt; "EOF" &lt;EOL&gt;&gt;
+| &lt;S_HEADER: ([" "])* "2" &lt;EOL&gt; "HEADER" &lt;EOL&gt;&gt;
+| &lt;S_CLASSES: ([" "])* "2" &lt;EOL&gt; "CLASSES" &lt;EOL&gt;&gt;
+| &lt;S_TABLES: ([" "])* "2" &lt;EOL&gt; "TABLES" &lt;EOL&gt;&gt;
+| &lt;S_BLOCKS: ([" "])* "2" &lt;EOL&gt; "BLOCKS" &lt;EOL&gt;&gt;
+| &lt;S_ENTITIES: ([" "])* "2" &lt;EOL&gt; "ENTITIES" &lt;EOL&gt;&gt;
+| &lt;S_OBJECTS: ([" "])* "2" &lt;EOL&gt; "OBJECTS" &lt;EOL&gt;&gt;
+| &lt;S_THUMBS: ([" "])* "2" &lt;EOL&gt; "THUMBNAILIMAGE" &lt;EOL&gt;&gt;
+| &lt;BLK_START: ([" "])* "0" &lt;EOL&gt; "BLOCK" &lt;EOL&gt;&gt;
+| &lt;BLK_END: ([" "])* "0" &lt;EOL&gt; "ENDBLK" &lt;EOL&gt;&gt;
+| &lt;TABLE_START: ([" "])* "0" &lt;EOL&gt; "TABLE" &lt;EOL&gt;&gt;
+| &lt;TABLE_END: ([" "])* "0" &lt;EOL&gt; "ENDTAB" &lt;EOL&gt;&gt;
+| &lt;#GROUP_CODE: ([" "])* (["0"-"9"])+&gt;
+| &lt;#TEXT: &lt;EOL&gt; (~["\r","\n"])* &lt;EOL&gt;&gt;
+| &lt;TOKEN_0: ([" "])* "0" &lt;TEXT&gt;&gt;
+| &lt;TOKEN_9: ([" "])* "9" &lt;TEXT&gt;&gt;
+| &lt;TOKEN_X: &lt;GROUP_CODE&gt; &lt;TEXT&gt;&gt;
+}
+
+   </PRE>
+  </TD>
+ </TR>
+</TABLE>
+<H2 ALIGN=CENTER>NON-TERMINALS</H2>
+<TABLE>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod1">start</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE></TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod2">file</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>( &lt;SEC_START&gt; <A HREF="#prod3">section</A> &lt;SEC_END&gt; )* &lt;FILE_EOF&gt;</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod3">section</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE><A HREF="#prod4">sectionHeader</A></TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>|</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE><A HREF="#prod5">sectionClasses</A></TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>|</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE><A HREF="#prod6">sectionTables</A></TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>|</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE><A HREF="#prod7">sectionBlocks</A></TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>|</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE><A HREF="#prod8">sectionEntities</A></TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>|</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE><A HREF="#prod9">sectionObjects</A></TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>|</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE><A HREF="#prod10">sectionThumbs</A></TD>
+</TR>
+ <!-- Special token -->
+ <TR>
+  <TD>
+<PRE>
+// Section HEADER --------------------------------------------------------------
+</PRE>
+  </TD>
+ </TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod4">sectionHeader</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;S_HEADER&gt; ( <A HREF="#prod11">variable</A> )*</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod11">variable</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;TOKEN_9&gt; ( &lt;TOKEN_X&gt; )*</TD>
+</TR>
+ <!-- Special token -->
+ <TR>
+  <TD>
+<PRE>
+// Section CLASSES -------------------------------------------------------------
+</PRE>
+  </TD>
+ </TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod5">sectionClasses</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;S_CLASSES&gt; ( <A HREF="#prod12">aClass</A> )*</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod12">aClass</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;TOKEN_0&gt; ( &lt;TOKEN_X&gt; )*</TD>
+</TR>
+ <!-- Special token -->
+ <TR>
+  <TD>
+<PRE>
+// Section TABLES  -------------------------------------------------------------
+</PRE>
+  </TD>
+ </TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod6">sectionTables</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;S_TABLES&gt; ( <A HREF="#prod13">tableStart</A> ( <A HREF="#prod14">tableEntry</A> )* <A HREF="#prod15">tableEnd</A> )*</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod13">tableStart</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;TABLE_START&gt; ( &lt;TOKEN_X&gt; )*</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod15">tableEnd</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;TABLE_END&gt; ( &lt;TOKEN_X&gt; )*</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod14">tableEntry</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;TOKEN_0&gt; ( &lt;TOKEN_9&gt; | &lt;TOKEN_X&gt; )*</TD>
+</TR>
+ <!-- Special token -->
+ <TR>
+  <TD>
+<PRE>
+// Section BLOCKS --------------------------------------------------------------
+</PRE>
+  </TD>
+ </TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod7">sectionBlocks</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;S_BLOCKS&gt; ( <A HREF="#prod16">blockStart</A> ( <A HREF="#prod17">entity</A> )* <A HREF="#prod18">blockEnd</A> )*</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod16">blockStart</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;BLK_START&gt; ( &lt;TOKEN_X&gt; )*</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod18">blockEnd</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;BLK_END&gt; ( &lt;TOKEN_X&gt; )*</TD>
+</TR>
+ <!-- Special token -->
+ <TR>
+  <TD>
+<PRE>
+// Section ENTITIES ------------------------------------------------------------
+</PRE>
+  </TD>
+ </TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod8">sectionEntities</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;S_ENTITIES&gt; ( <A HREF="#prod17">entity</A> )*</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod17">entity</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;TOKEN_0&gt; ( &lt;TOKEN_X&gt; )*</TD>
+</TR>
+ <!-- Special token -->
+ <TR>
+  <TD>
+<PRE>
+// Section OBJECTS -------------------------------------------------------------
+</PRE>
+  </TD>
+ </TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod9">sectionObjects</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;S_OBJECTS&gt; ( <A HREF="#prod19">anObject</A> )*</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod19">anObject</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;TOKEN_0&gt; ( &lt;TOKEN_9&gt; | &lt;TOKEN_X&gt; )*</TD>
+</TR>
+ <!-- Special token -->
+ <TR>
+  <TD>
+<PRE>
+// Section THUMBS --------------------------------------------------------------
+</PRE>
+  </TD>
+ </TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod10">sectionThumbs</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;S_THUMBS&gt; <A HREF="#prod20">thumb</A></TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod20">thumb</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;TOKEN_X&gt; ( &lt;TOKEN_X&gt; )*</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>
