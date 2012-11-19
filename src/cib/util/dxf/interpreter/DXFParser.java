@@ -120,9 +120,9 @@ public class DXFParser implements DXFParserConstants {
                 try {
                         file();
                 }
-                catch (QuitDXFParserException e) {
-                        {if (true) throw e;}
-                }
+                //catch (QuitDXFParserException e) {
+                //        {if (true) throw e;}
+                //}
                 catch (RuntimeException e) {
                         int line = token == null ? -1 : token.beginLine;
                         int column = token == null ? -1 : token.beginColumn;
