@@ -8,7 +8,7 @@ import cib.util.dxf.GroupCode;
 
 public class WriteDXF {
 
-	static void WriteToDXF() {
+	static void WriteToDXF(String dxfFileName) {
 		// TODO Auto-generated constructor stub
 		
 		// test data
@@ -64,9 +64,9 @@ public class WriteDXF {
 		xscale_factor = (int)(Math.max(lmax, dmax)*yscale_factor/thetamax);
 		
 		
-		File demofile = new File("demo.dxf");
+		File dxfFile = new File(dxfFileName);
 		try {
-			DXFWriter dxffile = new DXFWriter(demofile);
+			DXFWriter dxffile = new DXFWriter(dxfFile);
 			dxffile.startSection("HEADER");
 			dxffile.endSection();
 			dxffile.startSection("ENTITIES");

@@ -29,6 +29,7 @@ public class Main {
 		
 		File fileInput;
 		File fileOutput;
+		final String dxfFileName = "";
 		
 		Display display = Display.getDefault();
 		final Shell shell = new Shell();
@@ -86,7 +87,7 @@ public class Main {
 		Button ButtonCreateDXF = new Button(shell, SWT.NONE);
 		ButtonCreateDXF.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				WriteDXF.WriteToDXF();
+				WriteDXF.WriteToDXF(dxfFileName);
 			}
 		});
 		ButtonCreateDXF.setBounds(155, 66, 110, 23);
