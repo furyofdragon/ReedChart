@@ -41,12 +41,14 @@ public class Main {
 		float dmax = 0;
 		int thetald_length;
 		int i; 					// counter
-		int scale_factor = 1;
+		int xscale_factor = 1;
+		int yscale_factor = 1000;
 		int dtheta = 5;
-		float ds;
+		float dshoulder = 1;
 		
 		thetald_length = thetald.length;
 		
+		/**
 		// convert shoulders from m to mm
 		i = 0;
 		while (i <= thetald_length-1) {
@@ -54,6 +56,7 @@ public class Main {
 			thetald[i][2] = thetald[i][2]*1000;
 			i++;
 		}
+		*/
 		
 		// find min and max values
 		thetamin = thetald[0][0];
@@ -74,15 +77,16 @@ public class Main {
 		}
 		
 		// scale factor for theta values
-		scale_factor = (int)(Math.max(lmax, dmax)/thetamax);
+		xscale_factor = (int)(Math.max(lmax, dmax)*yscale_factor/thetamax);
+		/**
 		i = 0;
 		while (i <= thetald_length-1) {
-			thetald[i][0] = thetald[i][0]*scale_factor;
+			thetald[i][0] = thetald[i][0]*xscale_factor;
 			i++;
 		}
+		*/
 		
-		ds = (int)(Math.max(lmax, dmax)/10);
-		
+		//dshoulder = (int)(Math.max(lmax, dmax)/10);
 		
 		
 		File demofile = new File("demo.dxf");
@@ -98,10 +102,10 @@ public class Main {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Static shoulders");
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
-				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]);
-				dxffile.writeGroup(GroupCode.Y_1, thetald[i][1]);
-				dxffile.writeGroup(GroupCode.X_2, thetald[i+1][0]);
-				dxffile.writeGroup(GroupCode.Y_2, thetald[i+1][1]);
+				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]*xscale_factor);
+				dxffile.writeGroup(GroupCode.Y_1, thetald[i][1]*yscale_factor);
+				dxffile.writeGroup(GroupCode.X_2, thetald[i+1][0]*xscale_factor);
+				dxffile.writeGroup(GroupCode.Y_2, thetald[i+1][1]*yscale_factor);
 				
 				i++;
 			}
@@ -111,10 +115,10 @@ public class Main {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Dynamic shoulders");
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
-				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]);
-				dxffile.writeGroup(GroupCode.Y_1, thetald[i][2]);
-				dxffile.writeGroup(GroupCode.X_2, thetald[i+1][0]);
-				dxffile.writeGroup(GroupCode.Y_2, thetald[i+1][2]);
+				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]*xscale_factor);
+				dxffile.writeGroup(GroupCode.Y_1, thetald[i][2]*yscale_factor);
+				dxffile.writeGroup(GroupCode.X_2, thetald[i+1][0]*xscale_factor);
+				dxffile.writeGroup(GroupCode.Y_2, thetald[i+1][2]*yscale_factor);
 				
 				i++;
 			}
@@ -125,22 +129,22 @@ public class Main {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Grid");
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
-				dxffile.writeGroup(GroupCode.X_1, i*dtheta*scale_factor);
-				dxffile.writeGroup(GroupCode.Y_1, Math.min(lmin, dmin));
-				dxffile.writeGroup(GroupCode.X_2, i*dtheta*scale_factor);
-				dxffile.writeGroup(GroupCode.Y_2, Math.max(lmax, dmax));
+				dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
+				dxffile.writeGroup(GroupCode.Y_1, Math.min(lmin, dmin)*yscale_factor);
+				dxffile.writeGroup(GroupCode.X_2, i*dtheta*xscale_factor);
+				dxffile.writeGroup(GroupCode.Y_2, Math.max(lmax, dmax)*yscale_factor);
 				i++;
 			}
 			// horizontal grid lines
 			i = 0;
-			while (i <= (int)(Math.max(lmax, dmax)/ds)) {
+			while (i <= (int)(Math.max(lmax, dmax)/dshoulder)) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Grid");
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
-				dxffile.writeGroup(GroupCode.X_1, thetamin*scale_factor);
-				dxffile.writeGroup(GroupCode.Y_1, i*ds);
-				dxffile.writeGroup(GroupCode.X_2, thetamax*scale_factor);
-				dxffile.writeGroup(GroupCode.Y_2, i*ds);
+				dxffile.writeGroup(GroupCode.X_1, thetamin*xscale_factor);
+				dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
+				dxffile.writeGroup(GroupCode.X_2, thetamax*xscale_factor);
+				dxffile.writeGroup(GroupCode.Y_2, i*dshoulder*yscale_factor);
 				i++;
 			}
 			
