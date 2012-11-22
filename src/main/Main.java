@@ -56,10 +56,10 @@ public class Main {
 			public void widgetSelected(SelectionEvent e) {
 				FileDialog fdOpen = new FileDialog(shell, SWT.OPEN);
 				fdOpen.setText("Open");
-				String[] filterExt = {"*.str", "*.*"};
-				fdOpen.setFilterExtensions(filterExt);
-				String selected = fdOpen.open();
-				textInputPath.setText(selected);
+				String[] filterExtSave = {"*.str", "*.*"};
+				fdOpen.setFilterExtensions(filterExtSave);
+				String openselected = fdOpen.open();
+				textInputPath.setText(openselected);
 				
 				
 			}
@@ -68,6 +68,18 @@ public class Main {
 		ButtonBrowseInput.setText("Browse");
 		
 		Button ButtonBrowseOuput = new Button(shell, SWT.NONE);
+		ButtonBrowseOuput.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				FileDialog fdSave = new FileDialog(shell, SWT.SAVE);
+				fdSave.setText("Save as");
+				String[] filterExtSave = {"*.dxf", "*.*"};
+				fdSave.setFilterExtensions(filterExtSave);
+				String saveselected = fdSave.open();
+				textOutputPath.setText(saveselected);
+				
+				
+			}
+		});
 		ButtonBrowseOuput.setBounds(346, 37, 68, 23);
 		ButtonBrowseOuput.setText("Browse");
 		
