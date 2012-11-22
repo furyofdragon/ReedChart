@@ -8,7 +8,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.FileDialog;
 
 public class Main {
@@ -26,7 +25,6 @@ public class Main {
 		
 		Display display = Display.getDefault();
 		final Shell shell = new Shell();
-		shell.setImage(SWTResourceManager.getImage("logo.png"));
 		shell.setSize(435, 125);
 		shell.setMinimumSize(435, 125);
 		shell.setText("Reed chart");
