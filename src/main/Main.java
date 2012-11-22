@@ -1,7 +1,5 @@
 package main;
 
-import java.io.File;
-
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
@@ -25,11 +23,6 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		File fileInput;
-		File fileOutput;
-		final String dxfFileName = "";
 		
 		Display display = Display.getDefault();
 		final Shell shell = new Shell();
@@ -59,10 +52,7 @@ public class Main {
 				fdOpen.setText("Open");
 				String[] filterExtSave = {"*.str", "*.*"};
 				fdOpen.setFilterExtensions(filterExtSave);
-				String openselected = fdOpen.open();
-				textInputPath.setText(openselected);
-				
-				
+				textInputPath.setText(fdOpen.open());
 			}
 		});
 		ButtonBrowseInput.setBounds(346, 10, 68, 23);
@@ -75,10 +65,7 @@ public class Main {
 				fdSave.setText("Save as");
 				String[] filterExtSave = {"*.dxf", "*.*"};
 				fdSave.setFilterExtensions(filterExtSave);
-				String saveselected = fdSave.open();
-				textOutputPath.setText(saveselected);
-				
-				
+				textOutputPath.setText(fdSave.open());
 			}
 		});
 		ButtonBrowseOuput.setBounds(346, 37, 68, 23);
@@ -87,7 +74,7 @@ public class Main {
 		Button ButtonCreateDXF = new Button(shell, SWT.NONE);
 		ButtonCreateDXF.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				WriteDXF.WriteToDXF(dxfFileName);
+				WriteDXF.WriteToDXF(textOutputPath.getText());
 			}
 		});
 		ButtonCreateDXF.setBounds(155, 66, 110, 23);
