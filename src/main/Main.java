@@ -1,14 +1,14 @@
 package main;
 
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 
 public class Main {
 	private static Text textInputPath;
@@ -72,6 +72,7 @@ public class Main {
 		Button ButtonCreateDXF = new Button(shell, SWT.NONE);
 		ButtonCreateDXF.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
+				ReadSource.ReadDataSource();
 				WriteDXF.WriteToDXF(textOutputPath.getText());
 			}
 		});
