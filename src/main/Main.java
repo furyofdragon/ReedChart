@@ -48,15 +48,6 @@ public class Main {
 		
 		thetald_length = thetald.length;
 		
-		/**
-		// convert shoulders from m to mm
-		i = 0;
-		while (i <= thetald_length-1) {
-			thetald[i][1] = thetald[i][1]*1000;
-			thetald[i][2] = thetald[i][2]*1000;
-			i++;
-		}
-		*/
 		
 		// find min and max values
 		thetamin = thetald[0][0];
@@ -78,15 +69,6 @@ public class Main {
 		
 		// scale factor for theta values
 		xscale_factor = (int)(Math.max(lmax, dmax)*yscale_factor/thetamax);
-		/**
-		i = 0;
-		while (i <= thetald_length-1) {
-			thetald[i][0] = thetald[i][0]*xscale_factor;
-			i++;
-		}
-		*/
-		
-		//dshoulder = (int)(Math.max(lmax, dmax)/10);
 		
 		
 		File demofile = new File("demo.dxf");
