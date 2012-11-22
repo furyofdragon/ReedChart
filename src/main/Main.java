@@ -105,7 +105,8 @@ public class Main {
 				i++;
 			}
 			
-			// vertical grid lines
+			double textHeight = yscale_factor/10;
+			// vertical grid lines and labels
 			i = 0;
 			while (i <= (int)(thetamax/dtheta)) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
@@ -115,9 +116,24 @@ public class Main {
 				dxffile.writeGroup(GroupCode.Y_1, Math.min(lmin, dmin)*yscale_factor);
 				dxffile.writeGroup(GroupCode.X_2, i*dtheta*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_2, Math.max(lmax, dmax)*yscale_factor);
+				
+				dxffile.writeGroup(GroupCode.TYPE, "TEXT");
+				dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
+				dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
+				dxffile.writeGroup(GroupCode.Y_1, Math.min(lmin, dmin)*yscale_factor-2*textHeight);
+				dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
+				dxffile.writeGroup(GroupCode.TEXT, (i*dtheta));
+				
 				i++;
 			}
-			// horizontal grid lines
+			dxffile.writeGroup(GroupCode.TYPE, "TEXT");
+			dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
+			dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
+			dxffile.writeGroup(GroupCode.Y_1, Math.min(lmin, dmin)*yscale_factor-2*textHeight);
+			dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
+			dxffile.writeGroup(GroupCode.TEXT, "deg");
+			
+			// horizontal grid lines and labels
 			i = 0;
 			while (i <= (int)(Math.max(lmax, dmax)/dshoulder)) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
@@ -127,8 +143,22 @@ public class Main {
 				dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
 				dxffile.writeGroup(GroupCode.X_2, thetamax*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_2, i*dshoulder*yscale_factor);
+				
+				dxffile.writeGroup(GroupCode.TYPE, "TEXT");
+				dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
+				dxffile.writeGroup(GroupCode.X_1, thetamin*xscale_factor-3*textHeight);
+				dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
+				dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
+				dxffile.writeGroup(GroupCode.TEXT, (i*dshoulder));
+				
 				i++;
 			}
+			dxffile.writeGroup(GroupCode.TYPE, "TEXT");
+			dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
+			dxffile.writeGroup(GroupCode.X_1, thetamin*xscale_factor-3*textHeight);
+			dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
+			dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
+			dxffile.writeGroup(GroupCode.TEXT, "l, d , m");
 			
 			
 			dxffile.endSection();
