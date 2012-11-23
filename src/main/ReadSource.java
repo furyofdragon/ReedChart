@@ -11,12 +11,13 @@ import java.util.StringTokenizer;
 public class ReadSource {
 	
 	static float thetald[][];
+	static int N = 0;
 	
 	static void ReadDataSource(String strFileName) {
 		
 		String line = null;
 		String tableSeparator = "--------------------------------------------------------------------------------------------------------";
-		int N = 0;
+
 		int nn = 0;
 		int flag = 1;
 		ArrayList<String> al = new ArrayList<String>();
@@ -85,10 +86,13 @@ public class ReadSource {
 		
 	}
 	
-	/**
-	float getData() {
-		
+	int getArrayDimension() {
+		return N;
 	}
-	*/
+	
+	float[][] getDataArray() {
+		return thetald;
+	}
+	
 
 }
