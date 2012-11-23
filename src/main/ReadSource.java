@@ -10,6 +10,8 @@ import java.util.StringTokenizer;
 
 public class ReadSource {
 	
+	static float thetald[][];
+	
 	static void ReadDataSource(String strFileName) {
 		
 		String line = null;
@@ -18,7 +20,6 @@ public class ReadSource {
 		int nn = 0;
 		int flag = 1;
 		ArrayList<String> al = new ArrayList<String>();
-		float thetald[][];
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(strFileName));
@@ -83,5 +84,11 @@ public class ReadSource {
 		}
 		
 	}
+	
+	/**
+	float getData() {
+		
+	}
+	*/
 
 }
