@@ -86,11 +86,11 @@ public class ReadSource {
 		
 	}
 	
-	int getArrayDimension() {
+	static int getArrayDimension() {
 		return N;
 	}
 	
-	float[][] getDataArray() {
+	static float[][] getDataArray() {
 		return thetald;
 	}
 	
