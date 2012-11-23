@@ -31,6 +31,7 @@ public class ReadSource {
 							N = N+1;
 							al.add(line);
 						}
+						nn = nn + 1;
 					}
 				}
 			}
@@ -43,11 +44,14 @@ public class ReadSource {
 			e.printStackTrace();
 		}
 		
+		
+		
+		
 		try {
 			PrintWriter pw = new PrintWriter("res.txt");
 			int i = 0;
-			pw.println(N);
-			pw.println(nn);
+			pw.println("Lines in table " + N);
+			pw.println("Lines in file " + nn);
 			while (i < N) {
 				pw.println(al.get(i));
 				i++;
@@ -57,7 +61,6 @@ public class ReadSource {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 	}
 
