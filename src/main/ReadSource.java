@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -62,7 +62,7 @@ public class ReadSource {
 			
 		}
 		
-		
+		/**
 		try {
 			PrintWriter pw = new PrintWriter("res.txt");
 			int i = 0;
@@ -83,6 +83,7 @@ public class ReadSource {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 		
 	}
 	

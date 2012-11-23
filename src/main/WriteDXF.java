@@ -11,29 +11,10 @@ public class WriteDXF {
 	static void WriteToDXF(String dxfFileName) {
 		// TODO Auto-generated constructor stub
 		
-		/**
-		// test data
-		float thetald[][] = {
-				{0F, 0.000F, 0.000F},
-				{5F, 0.952F, 0.042F},
-				{10F, 1.922F, 0.167F},
-				{15F, 2.938F, 0.379F},
-				{20F, 3.935F, 0.679F},
-				{25F, 4.407F, 1.043F},
-				{30F, 4.903F, 1.449F},
-				{40F, 5.504F, 2.365F},
-				{50F, 5.612F, 3.340F},
-				{60F, 5.188F, 4.287F},
-				{72F, 4.384F, 5.126F},
-				{87f, 2.749f, 6.067f}
-		};
-		*/
 		int N = ReadSource.getArrayDimension();
 		float[][] thetald;
 		thetald = new float[N][2];
 		thetald = ReadSource.getDataArray();
-		
-		
 		
 		float thetamin = 0;
 		float thetamax = 0;
