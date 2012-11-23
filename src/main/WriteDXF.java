@@ -24,7 +24,7 @@ public class WriteDXF {
 				{50F, 5.612F, 3.340F},
 				{60F, 5.188F, 4.287F},
 				{72F, 4.384F, 5.126F},
-				{85f, 2.749f, 6.067f}
+				{87f, 2.749f, 6.067f}
 		};
 		
 		float thetamin = 0;
