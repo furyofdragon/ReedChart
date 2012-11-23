@@ -72,7 +72,7 @@ public class Main {
 		Button ButtonCreateDXF = new Button(shell, SWT.NONE);
 		ButtonCreateDXF.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				ReadSource.ReadDataSource();
+				ReadSource.ReadDataSource(textInputPath.getText());
 				WriteDXF.WriteToDXF(textOutputPath.getText());
 			}
 		});
