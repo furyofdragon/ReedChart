@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class ReadSource {
 	
@@ -17,6 +18,7 @@ public class ReadSource {
 		int nn = 0;
 		int flag = 1;
 		ArrayList<String> al = new ArrayList<String>();
+		float thetald[][];
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(strFileName));
@@ -44,7 +46,19 @@ public class ReadSource {
 			e.printStackTrace();
 		}
 		
-		
+		thetald = new float[N][3];
+		for (int i = 0; i < N; i++) {
+			StringTokenizer token = new StringTokenizer(al.get(i), "|");
+			//token.nextToken().trim();
+			thetald[i][0] = Float.parseFloat(token.nextToken().trim());
+			token.nextToken().trim();
+			token.nextToken().trim();
+			token.nextToken().trim();
+			token.nextToken().trim();
+			thetald[i][1] = Float.parseFloat(token.nextToken().trim());
+			thetald[i][2] = Float.parseFloat(token.nextToken().trim());
+			
+		}
 		
 		
 		try {
@@ -56,6 +70,12 @@ public class ReadSource {
 				pw.println(al.get(i));
 				i++;
 			}
+			pw.println("");
+			pw.println("");
+			for (int j = 0; j < N; j++) {
+				pw.println(thetald[j][0] + "\t" + thetald[j][1] + "\t" + thetald[j][2]);
+			}
+			
 			pw.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
