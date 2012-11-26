@@ -59,6 +59,29 @@ public class WriteDXF {
 			DXFWriter dxffile = new DXFWriter(dxfFile);
 			dxffile.startSection("HEADER");
 			dxffile.endSection();
+			
+			dxffile.startSection("TABLES");
+			dxffile.writeGroup(GroupCode.TYPE, "TABLE");
+			dxffile.writeGroup(GroupCode.NAME, "LAYER");
+			dxffile.writeGroup(GroupCode.HANDLE, "");
+			dxffile.writeGroup(GroupCode.SUBCLASS_DATA_MARKER, "");
+			dxffile.writeGroup(GroupCode.INT_1, 10);
+			dxffile.writeGroup(GroupCode.TYPE, "LAYER");
+			dxffile.writeGroup(GroupCode.NAME, "Static shoulders");
+			dxffile.writeGroup(GroupCode.COLOR, 2);		// yellow
+			dxffile.writeGroup(GroupCode.TYPE, "LAYER");
+			dxffile.writeGroup(GroupCode.NAME, "Dynamic shoulders");
+			dxffile.writeGroup(GroupCode.COLOR, 3);		// green
+			dxffile.writeGroup(GroupCode.TYPE, "LAYER");
+			dxffile.writeGroup(GroupCode.NAME, "Grid");
+			dxffile.writeGroup(GroupCode.COLOR, 9);		// grey
+			dxffile.writeGroup(GroupCode.TYPE, "LAYER");
+			dxffile.writeGroup(GroupCode.NAME, "Text");
+			dxffile.writeGroup(GroupCode.COLOR, 4);		// blue
+			dxffile.writeGroup(GroupCode.TYPE, "ENDTAB");
+			dxffile.endSection();
+			
+			
 			dxffile.startSection("ENTITIES");
 			
 			
