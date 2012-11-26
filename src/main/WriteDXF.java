@@ -47,7 +47,7 @@ public class WriteDXF {
 			i++;
 		}
 		
-		//dshoulder = (int)(Math.max(Math.max(lmax, dmax), -Math.min(lmin, dmin))*100)/1000;
+		dshoulder = ((int)(10*Math.max(Math.max(lmax, dmax), -Math.min(lmin, dmin))))/100f;
 		
 		// scale factor for theta values
 		xscale_factor = (int)(Math.max(lmax, dmax)*yscale_factor/thetamax);
