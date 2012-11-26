@@ -11,10 +11,7 @@ public class WriteDXF {
 	static void WriteToDXF(String dxfFileName) {
 		// TODO Auto-generated constructor stub
 		
-		int N = ReadSource.getArrayDimension();
-		float[][] thetald;
-		thetald = new float[N][2];
-		thetald = ReadSource.getDataArray();
+		float[][] thetald = ReadSource.getDataArray();
 		
 		float thetamin = 0;
 		float thetamax = 0;
