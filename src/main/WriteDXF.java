@@ -107,7 +107,7 @@ public class WriteDXF {
 				dxffile.writeGroup(GroupCode.TYPE, "TEXT");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
 				dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
-				dxffile.writeGroup(GroupCode.Y_1, Math.min(Math.min(lmin, dmin),0)*yscale_factor-2*textHeight);
+				dxffile.writeGroup(GroupCode.Y_1, -2*textHeight);
 				dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
 				dxffile.writeGroup(GroupCode.TEXT, (i*dtheta));
 				
