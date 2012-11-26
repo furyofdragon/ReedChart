@@ -2,6 +2,7 @@ package main;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.NumberFormat;
 
 import cib.util.dxf.DXFWriter;
 import cib.util.dxf.GroupCode;
@@ -87,6 +88,9 @@ public class WriteDXF {
 				i++;
 			}
 			
+			NumberFormat nf = NumberFormat.getInstance();
+			nf.setMaximumFractionDigits(3);		// digits after comma
+			
 			//double textHeight = yscale_factor/10;
 			double textHeight = dshoulder*yscale_factor/4;
 			// vertical grid lines and labels
@@ -96,14 +100,14 @@ public class WriteDXF {
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Grid");
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
 				dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
-				dxffile.writeGroup(GroupCode.Y_1, Math.min(lmin, dmin)*yscale_factor);
+				dxffile.writeGroup(GroupCode.Y_1, Math.min(Math.min(lmin, dmin),0)*yscale_factor);
 				dxffile.writeGroup(GroupCode.X_2, i*dtheta*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_2, (Math.max(lmax, dmax)+dshoulder)*yscale_factor);
 				
 				dxffile.writeGroup(GroupCode.TYPE, "TEXT");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
 				dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
-				dxffile.writeGroup(GroupCode.Y_1, Math.min(lmin, dmin)*yscale_factor-2*textHeight);
+				dxffile.writeGroup(GroupCode.Y_1, Math.min(Math.min(lmin, dmin),0)*yscale_factor-2*textHeight);
 				dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
 				dxffile.writeGroup(GroupCode.TEXT, (i*dtheta));
 				
@@ -112,7 +116,7 @@ public class WriteDXF {
 			dxffile.writeGroup(GroupCode.TYPE, "TEXT");
 			dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
 			dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
-			dxffile.writeGroup(GroupCode.Y_1, Math.min(lmin, dmin)*yscale_factor-2*textHeight);
+			dxffile.writeGroup(GroupCode.Y_1, -2*textHeight);
 			dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
 			dxffile.writeGroup(GroupCode.TEXT, "deg");
 			
@@ -122,23 +126,23 @@ public class WriteDXF {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Grid");
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
-				dxffile.writeGroup(GroupCode.X_1, thetamin*xscale_factor);
+				dxffile.writeGroup(GroupCode.X_1, Math.min(thetamin, 0)*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
 				dxffile.writeGroup(GroupCode.X_2, (thetamax+dtheta)*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_2, i*dshoulder*yscale_factor);
 				
 				dxffile.writeGroup(GroupCode.TYPE, "TEXT");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
-				dxffile.writeGroup(GroupCode.X_1, thetamin*xscale_factor-3*textHeight);
+				dxffile.writeGroup(GroupCode.X_1, Math.min(thetamin, 0)*xscale_factor-3*textHeight);
 				dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
 				dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
-				dxffile.writeGroup(GroupCode.TEXT, (i*dshoulder));
+				dxffile.writeGroup(GroupCode.TEXT, nf.format((i*dshoulder)));
 				
 				i++;
 			}
 			dxffile.writeGroup(GroupCode.TYPE, "TEXT");
 			dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
-			dxffile.writeGroup(GroupCode.X_1, thetamin*xscale_factor-3*textHeight);
+			dxffile.writeGroup(GroupCode.X_1, -3*textHeight);
 			dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
 			dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
 			dxffile.writeGroup(GroupCode.TEXT, "l, d , m");
