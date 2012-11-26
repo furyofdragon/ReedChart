@@ -23,7 +23,7 @@ public class WriteDXF {
 		int i; 					// counter
 		int xscale_factor = 1;
 		int yscale_factor = 1000;
-		int dtheta = 5;
+		int dtheta = 5;			// in degrees
 		float dshoulder = 0.5f;
 		
 		thetald_length = thetald.length;
@@ -46,6 +46,8 @@ public class WriteDXF {
 			dmax = Math.max(thetald[i][2], dmax);
 			i++;
 		}
+		
+		//dshoulder = (int)(Math.max(Math.max(lmax, dmax), -Math.min(lmin, dmin))*100)/1000;
 		
 		// scale factor for theta values
 		xscale_factor = (int)(Math.max(lmax, dmax)*yscale_factor/thetamax);
@@ -85,7 +87,8 @@ public class WriteDXF {
 				i++;
 			}
 			
-			double textHeight = yscale_factor/10;
+			//double textHeight = yscale_factor/10;
+			double textHeight = dshoulder*yscale_factor/4;
 			// vertical grid lines and labels
 			i = 0;
 			while (i <= (int)(thetamax/dtheta)+1) {
