@@ -91,8 +91,13 @@ public class WriteDXF {
 			NumberFormat nf = NumberFormat.getInstance();
 			nf.setMaximumFractionDigits(3);		// digits after comma
 			
-			//double textHeight = yscale_factor/10;
 			double textHeight = dshoulder*yscale_factor/4;
+			
+			float xmin = Math.min(thetamin, 0)*xscale_factor;
+			float xmax = (thetamax+dtheta)*xscale_factor;
+			float ymin = (Math.min(Math.min(lmin, dmin),0)-dshoulder)*yscale_factor;
+			float ymax = (Math.max(lmax, dmax)+dshoulder)*yscale_factor;
+			
 			// vertical grid lines and labels
 			i = Math.min((int)(thetamin/dtheta)-1, 0);
 			while (i <= (int)(thetamax/dtheta)+1) {
@@ -100,9 +105,9 @@ public class WriteDXF {
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Grid");
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
 				dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
-				dxffile.writeGroup(GroupCode.Y_1, Math.min(Math.min(lmin, dmin),0)*yscale_factor);
+				dxffile.writeGroup(GroupCode.Y_1, ymin);
 				dxffile.writeGroup(GroupCode.X_2, i*dtheta*xscale_factor);
-				dxffile.writeGroup(GroupCode.Y_2, (Math.max(lmax, dmax)+dshoulder)*yscale_factor);
+				dxffile.writeGroup(GroupCode.Y_2, ymax);
 				
 				dxffile.writeGroup(GroupCode.TYPE, "TEXT");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
@@ -126,9 +131,9 @@ public class WriteDXF {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Grid");
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
-				dxffile.writeGroup(GroupCode.X_1, Math.min(thetamin, 0)*xscale_factor);
+				dxffile.writeGroup(GroupCode.X_1, xmin);
 				dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
-				dxffile.writeGroup(GroupCode.X_2, (thetamax+dtheta)*xscale_factor);
+				dxffile.writeGroup(GroupCode.X_2, xmax);
 				dxffile.writeGroup(GroupCode.Y_2, i*dshoulder*yscale_factor);
 				
 				dxffile.writeGroup(GroupCode.TYPE, "TEXT");
