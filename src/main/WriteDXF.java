@@ -90,7 +90,7 @@ public class WriteDXF {
 			//double textHeight = yscale_factor/10;
 			double textHeight = dshoulder*yscale_factor/4;
 			// vertical grid lines and labels
-			i = 0;
+			i = Math.min((int)(thetamin/dtheta)-1, 0);
 			while (i <= (int)(thetamax/dtheta)+1) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Grid");
@@ -117,7 +117,7 @@ public class WriteDXF {
 			dxffile.writeGroup(GroupCode.TEXT, "deg");
 			
 			// horizontal grid lines and labels
-			i = 0;
+			i = Math.min((int)(Math.min(lmin, dmin)/dshoulder)-1, 0);
 			while (i <= (int)(Math.max(lmax, dmax)/dshoulder)+1) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, "Grid");
