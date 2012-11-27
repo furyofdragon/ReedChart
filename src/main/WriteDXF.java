@@ -25,7 +25,13 @@ public class WriteDXF {
 		int xscale_factor = 1;
 		int yscale_factor = 1000;
 		int dtheta = 5;			// in degrees
-		float dshoulder = 0.5f;
+		float dshoulder;
+		
+		String staticShouldersName = "Static shoulders";
+		String dynamicShouldersName = "Dynamic shoulders";
+		String gridName = "Grid";
+		String textName = "Text";
+		
 		
 		thetald_length = thetald.length;
 		
@@ -67,16 +73,16 @@ public class WriteDXF {
 			dxffile.writeGroup(GroupCode.SUBCLASS_DATA_MARKER, "");
 			dxffile.writeGroup(GroupCode.INT_1, 10);
 			dxffile.writeGroup(GroupCode.TYPE, "LAYER");
-			dxffile.writeGroup(GroupCode.NAME, "Static shoulders");
+			dxffile.writeGroup(GroupCode.NAME, staticShouldersName);
 			dxffile.writeGroup(GroupCode.COLOR, 2);		// yellow
 			dxffile.writeGroup(GroupCode.TYPE, "LAYER");
-			dxffile.writeGroup(GroupCode.NAME, "Dynamic shoulders");
+			dxffile.writeGroup(GroupCode.NAME, dynamicShouldersName);
 			dxffile.writeGroup(GroupCode.COLOR, 3);		// green
 			dxffile.writeGroup(GroupCode.TYPE, "LAYER");
-			dxffile.writeGroup(GroupCode.NAME, "Grid");
+			dxffile.writeGroup(GroupCode.NAME, gridName);
 			dxffile.writeGroup(GroupCode.COLOR, 9);		// grey
 			dxffile.writeGroup(GroupCode.TYPE, "LAYER");
-			dxffile.writeGroup(GroupCode.NAME, "Text");
+			dxffile.writeGroup(GroupCode.NAME, textName);
 			dxffile.writeGroup(GroupCode.COLOR, 4);		// blue
 			dxffile.writeGroup(GroupCode.TYPE, "ENDTAB");
 			dxffile.endSection();
@@ -88,7 +94,7 @@ public class WriteDXF {
 			i = 0;
 			while (i <= thetald_length-2) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
-				dxffile.writeGroup(GroupCode.LAYER_NAME, "Static shoulders");
+				dxffile.writeGroup(GroupCode.LAYER_NAME, staticShouldersName);
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
 				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_1, thetald[i][1]*yscale_factor);
@@ -101,7 +107,7 @@ public class WriteDXF {
 			i = 0;
 			while (i <= thetald_length-2) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
-				dxffile.writeGroup(GroupCode.LAYER_NAME, "Dynamic shoulders");
+				dxffile.writeGroup(GroupCode.LAYER_NAME, dynamicShouldersName);
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
 				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_1, thetald[i][2]*yscale_factor);
@@ -125,7 +131,7 @@ public class WriteDXF {
 			i = Math.min((int)(thetamin/dtheta)-1, 0);
 			while (i <= (int)(thetamax/dtheta)+1) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
-				dxffile.writeGroup(GroupCode.LAYER_NAME, "Grid");
+				dxffile.writeGroup(GroupCode.LAYER_NAME, gridName);
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
 				dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_1, ymin);
@@ -133,7 +139,7 @@ public class WriteDXF {
 				dxffile.writeGroup(GroupCode.Y_2, ymax);
 				
 				dxffile.writeGroup(GroupCode.TYPE, "TEXT");
-				dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
+				dxffile.writeGroup(GroupCode.LAYER_NAME, textName);
 				dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_1, -2*textHeight);
 				dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
@@ -142,7 +148,7 @@ public class WriteDXF {
 				i++;
 			}
 			dxffile.writeGroup(GroupCode.TYPE, "TEXT");
-			dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
+			dxffile.writeGroup(GroupCode.LAYER_NAME, textName);
 			dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
 			dxffile.writeGroup(GroupCode.Y_1, -2*textHeight);
 			dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
@@ -152,7 +158,7 @@ public class WriteDXF {
 			i = Math.min((int)(Math.min(lmin, dmin)/dshoulder)-1, 0);
 			while (i <= (int)(Math.max(lmax, dmax)/dshoulder)+1) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
-				dxffile.writeGroup(GroupCode.LAYER_NAME, "Grid");
+				dxffile.writeGroup(GroupCode.LAYER_NAME, gridName);
 				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
 				dxffile.writeGroup(GroupCode.X_1, xmin);
 				dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
@@ -160,7 +166,7 @@ public class WriteDXF {
 				dxffile.writeGroup(GroupCode.Y_2, i*dshoulder*yscale_factor);
 				
 				dxffile.writeGroup(GroupCode.TYPE, "TEXT");
-				dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
+				dxffile.writeGroup(GroupCode.LAYER_NAME, textName);
 				dxffile.writeGroup(GroupCode.X_1, Math.min(thetamin, 0)*xscale_factor-3*textHeight);
 				dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
 				dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
@@ -169,7 +175,7 @@ public class WriteDXF {
 				i++;
 			}
 			dxffile.writeGroup(GroupCode.TYPE, "TEXT");
-			dxffile.writeGroup(GroupCode.LAYER_NAME, "Text");
+			dxffile.writeGroup(GroupCode.LAYER_NAME, textName);
 			dxffile.writeGroup(GroupCode.X_1, -3*textHeight);
 			dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
 			dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
