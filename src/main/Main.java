@@ -78,12 +78,13 @@ public class Main {
 		ButtonBrowseOuput.setText(Messages.getString("Main.ButtonBrowseOuput.text")); //$NON-NLS-1$
 		new Label(shell, SWT.NONE);
 		
-		Button ButtonCreateDXF = new Button(shell, SWT.NONE);
+		final Button ButtonCreateDXF = new Button(shell, SWT.NONE);
 		ButtonCreateDXF.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		ButtonCreateDXF.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				ReadSource.ReadDataSource(textInputPath.getText());
 				WriteDXF.WriteToDXF(textOutputPath.getText());
+				ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXFPressed.text"));
 			}
 		});
 		ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXF.text")); //$NON-NLS-1$
