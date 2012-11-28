@@ -128,7 +128,7 @@ public class WriteDXF {
 			float ymax = (Math.max(lmax, dmax)+dshoulder)*yscale_factor;
 			
 			// vertical grid lines and labels
-			i = Math.min((int)(thetamin/dtheta)-1, 0);
+			i = Math.min((int)(thetamin/dtheta), 0);
 			while (i <= (int)(thetamax/dtheta)+1) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, gridName);
