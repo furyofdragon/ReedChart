@@ -71,7 +71,7 @@ public class WriteDXF {
 			dxffile.writeGroup(GroupCode.NAME, "LAYER");
 			dxffile.writeGroup(GroupCode.HANDLE, "");
 			dxffile.writeGroup(GroupCode.SUBCLASS_DATA_MARKER, "");
-			dxffile.writeGroup(GroupCode.INT_1, 10);
+			dxffile.writeGroup(GroupCode.INT_1, 10);	// maximum rows in table
 			dxffile.writeGroup(GroupCode.TYPE, "LAYER");
 			dxffile.writeGroup(GroupCode.NAME, staticShouldersName);
 			dxffile.writeGroup(GroupCode.COLOR, 2);		// yellow
