@@ -10,6 +10,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import messages.Messages;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
 
 public class Main {
 	private static Text textInputPath;
@@ -29,22 +31,19 @@ public class Main {
 		shell.setSize(435, 125);
 		shell.setMinimumSize(435, 125);
 		shell.setText(Messages.getString("Main.shell.text")); //$NON-NLS-1$
+		shell.setLayout(new GridLayout(3, false));
 		
 		Label LabelFileInput = new Label(shell, SWT.NONE);
-		LabelFileInput.setBounds(10, 10, 64, 21);
+		LabelFileInput.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		LabelFileInput.setText(Messages.getString("Main.LabelFileInput.text")); //$NON-NLS-1$
 		
-		Label labelFileOutput = new Label(shell, SWT.NONE);
-		labelFileOutput.setBounds(10, 37, 64, 23);
-		labelFileOutput.setText(Messages.getString("Main.labelFileOutput.text")); //$NON-NLS-1$
-		
 		textInputPath = new Text(shell, SWT.BORDER);
-		textInputPath.setBounds(80, 10, 260, 21);
-		
-		textOutputPath = new Text(shell, SWT.BORDER);
-		textOutputPath.setBounds(80, 37, 260, 23);
+		GridData gd_textInputPath = new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1);
+		gd_textInputPath.minimumWidth = 260;
+		textInputPath.setLayoutData(gd_textInputPath);
 		
 		Button ButtonBrowseInput = new Button(shell, SWT.NONE);
+		ButtonBrowseInput.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		ButtonBrowseInput.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				FileDialog fdOpen = new FileDialog(shell, SWT.OPEN);
@@ -54,10 +53,19 @@ public class Main {
 				textInputPath.setText(fdOpen.open());
 			}
 		});
-		ButtonBrowseInput.setBounds(346, 10, 68, 23);
 		ButtonBrowseInput.setText(Messages.getString("Main.ButtonBrowseInput.text")); //$NON-NLS-1$
 		
+		Label labelFileOutput = new Label(shell, SWT.NONE);
+		labelFileOutput.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		labelFileOutput.setText(Messages.getString("Main.labelFileOutput.text")); //$NON-NLS-1$
+		
+		textOutputPath = new Text(shell, SWT.BORDER);
+		GridData gd_textOutputPath = new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1);
+		gd_textOutputPath.minimumWidth = 260;
+		textOutputPath.setLayoutData(gd_textOutputPath);
+		
 		Button ButtonBrowseOuput = new Button(shell, SWT.NONE);
+		ButtonBrowseOuput.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		ButtonBrowseOuput.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				FileDialog fdSave = new FileDialog(shell, SWT.SAVE);
@@ -67,18 +75,19 @@ public class Main {
 				textOutputPath.setText(fdSave.open());
 			}
 		});
-		ButtonBrowseOuput.setBounds(346, 37, 68, 23);
 		ButtonBrowseOuput.setText(Messages.getString("Main.ButtonBrowseOuput.text")); //$NON-NLS-1$
+		new Label(shell, SWT.NONE);
 		
 		Button ButtonCreateDXF = new Button(shell, SWT.NONE);
+		ButtonCreateDXF.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		ButtonCreateDXF.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				ReadSource.ReadDataSource(textInputPath.getText());
 				WriteDXF.WriteToDXF(textOutputPath.getText());
 			}
 		});
-		ButtonCreateDXF.setBounds(155, 66, 110, 23);
 		ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXF.text")); //$NON-NLS-1$
+		new Label(shell, SWT.NONE);
 
 		shell.open();
 		shell.layout();
