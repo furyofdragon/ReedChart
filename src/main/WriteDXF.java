@@ -91,72 +91,9 @@ public class WriteDXF {
 			dxffile.startSection("ENTITIES");
 			
 			
-			i = 0;
-			while (i <= thetald_length-2) {
-				dxffile.writeGroup(GroupCode.TYPE, "LINE");
-				dxffile.writeGroup(GroupCode.LAYER_NAME, staticShouldersName);
-				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
-				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]*xscale_factor);
-				dxffile.writeGroup(GroupCode.Y_1, thetald[i][1]*yscale_factor);
-				dxffile.writeGroup(GroupCode.X_2, thetald[i+1][0]*xscale_factor);
-				dxffile.writeGroup(GroupCode.Y_2, thetald[i+1][1]*yscale_factor);
-				
-				i++;
-			}
-			
-			i = 0;
-			while (i <= thetald_length-2) {
-				dxffile.writeGroup(GroupCode.TYPE, "LINE");
-				dxffile.writeGroup(GroupCode.LAYER_NAME, dynamicShouldersName);
-				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
-				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]*xscale_factor);
-				dxffile.writeGroup(GroupCode.Y_1, thetald[i][2]*yscale_factor);
-				dxffile.writeGroup(GroupCode.X_2, thetald[i+1][0]*xscale_factor);
-				dxffile.writeGroup(GroupCode.Y_2, thetald[i+1][2]*yscale_factor);
-				
-				i++;
-			}
-			
-			/**
-			// test spline
-			
-			int splineDegree = 3;		// cubic spline
-			dxffile.writeGroup(GroupCode.TYPE, "SPLINE");
-			dxffile.writeGroup(GroupCode.LAYER_NAME, "spline");
-			//dxffile.writeGroup(GroupCode.SUBCLASS_DATA_MARKER, "AcDbSpline");
-			dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
-			dxffile.writeGroup(GroupCode.EXTRUSION_X, 0);
-			dxffile.writeGroup(GroupCode.EXTRUSION_Y, 0);
-			dxffile.writeGroup(GroupCode.EXTRUSION_Z, 1);
-			dxffile.writeGroup(GroupCode.INT_1, 8);		// planar
-			dxffile.writeGroup(GroupCode.INT_2, splineDegree);
-			dxffile.writeGroup(GroupCode.INT_3, splineDegree+thetald_length+2);	// knots
-			dxffile.writeGroup(GroupCode.INT_4, thetald_length);	// control points
-			//dxffile.writeGroup(GroupCode.INT_5, 0);	// fit points
-			// knots
-			i = 1;
-			while (i <= splineDegree+thetald_length-1) {
-				dxffile.writeGroup(GroupCode.DOUBLE_1, (int)(i/4));
-				
-				i++;
-			}
-			// points
-			i = 0;
-			while (i <= thetald_length-1) {
-				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]*xscale_factor);
-				dxffile.writeGroup(GroupCode.Y_1, thetald[i][1]*yscale_factor);
-				dxffile.writeGroup(GroupCode.Z_1, 0);
-				
-				i++;
-			}
-			//dxffile.writeGroup(GroupCode.TYPE, "SEQEND");
-			*/
-			
-			
-			// test polyline
-			
 			dxffile.writeGroup(GroupCode.TYPE, "POLYLINE");
-			dxffile.writeGroup(GroupCode.LAYER_NAME, "spline");
+			dxffile.writeGroup(GroupCode.LAYER_NAME, staticShouldersName);
+			dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
 			dxffile.writeGroup(GroupCode.ENTITIES_FOLLOW_FLAG, 1);
 			dxffile.writeGroup(GroupCode.X_1, 0);
 			dxffile.writeGroup(GroupCode.Y_1, 0);
@@ -166,25 +103,32 @@ public class WriteDXF {
 			i = 0;
 			while (i <= thetald_length-1) {
 				dxffile.writeGroup(GroupCode.TYPE, "VERTEX");
-				dxffile.writeGroup(GroupCode.LAYER_NAME, "spline");
+				dxffile.writeGroup(GroupCode.LAYER_NAME, staticShouldersName);
 				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_1, thetald[i][1]*yscale_factor);
-				/**
-				double bulge = 0;
-				if ((i == 0)|(i == thetald_length-1)) {
-					bulge = 0;
-				} else {
-					bulge = (thetald[i+1][1]-thetald[i-1][1])*yscale_factor/((thetald[i+1][0]-thetald[i-1][0])*xscale_factor);
-				}
-				//dxffile.writeGroup(GroupCode.DOUBLE_3, bulge);	// bulge option, in work
-				dxffile.writeGroup(GroupCode.ANGLE_1, bulge);
-				//dxffile.writeGroup(GroupCode.INT_1, 8);
-				 */
-				
 				i++;
 			}
 			dxffile.writeGroup(GroupCode.TYPE, "SEQEND");
 			
+			
+			dxffile.writeGroup(GroupCode.TYPE, "POLYLINE");
+			dxffile.writeGroup(GroupCode.LAYER_NAME, dynamicShouldersName);
+			dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
+			dxffile.writeGroup(GroupCode.ENTITIES_FOLLOW_FLAG, 1);
+			dxffile.writeGroup(GroupCode.X_1, 0);
+			dxffile.writeGroup(GroupCode.Y_1, 0);
+			dxffile.writeGroup(GroupCode.Z_1, 0);
+			dxffile.writeGroup(GroupCode.INT_1, 4);
+			dxffile.writeGroup(GroupCode.INT_6, 6);
+			i = 0;
+			while (i <= thetald_length-1) {
+				dxffile.writeGroup(GroupCode.TYPE, "VERTEX");
+				dxffile.writeGroup(GroupCode.LAYER_NAME, dynamicShouldersName);
+				dxffile.writeGroup(GroupCode.X_1, thetald[i][0]*xscale_factor);
+				dxffile.writeGroup(GroupCode.Y_1, thetald[i][2]*yscale_factor);
+				i++;
+			}
+			dxffile.writeGroup(GroupCode.TYPE, "SEQEND");
 			
 			
 			
