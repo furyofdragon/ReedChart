@@ -12,6 +12,7 @@ import org.eclipse.swt.widgets.Text;
 import messages.Messages;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Link;
 
 public class Main {
 	private static Text textInputPath;
@@ -28,8 +29,8 @@ public class Main {
 		
 		Display display = Display.getDefault();
 		final Shell shell = new Shell();
-		shell.setSize(435, 125);
-		shell.setMinimumSize(435, 125);
+		shell.setSize(435, 175);
+		shell.setMinimumSize(435, 175);
 		shell.setText(Messages.getString("Main.shell.text")); //$NON-NLS-1$
 		shell.setLayout(new GridLayout(3, false));
 		
@@ -88,6 +89,15 @@ public class Main {
 			}
 		});
 		ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXF.text")); //$NON-NLS-1$
+		new Label(shell, SWT.NONE);
+		
+		Link link = new Link(shell, SWT.NONE);
+		GridData gd_link = new GridData(SWT.CENTER, SWT.BOTTOM, true, false, 2, 1);
+		gd_link.widthHint = 359;
+		gd_link.verticalIndent = 5;
+		gd_link.horizontalIndent = 5;
+		link.setLayoutData(gd_link);
+		link.setText(Messages.getString("Main.link.text")); //$NON-NLS-1$
 		new Label(shell, SWT.NONE);
 
 		shell.open();
