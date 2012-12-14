@@ -21,10 +21,10 @@ public class WriteDXF {
 		float dmin = 0;
 		float dmax = 0;
 		int thetald_length;
-		int i; 					// counter
+		int i; 						// counter
 		int xscale_factor = 1;
-		int yscale_factor = 1000;
-		int dtheta = 5;			// in degrees
+		int yscale_factor = 1000;	// scale factor for shoulders
+		int dtheta = 5;				// in degrees
 		float dshoulder;
 		
 		String staticShouldersName = "Static shoulders";
@@ -195,6 +195,15 @@ public class WriteDXF {
 			dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
 			dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
 			dxffile.writeGroup(GroupCode.TEXT, "l, d , m");
+			
+			// xscale_factor
+			dxffile.writeGroup(GroupCode.TYPE, "TEXT");
+			dxffile.writeGroup(GroupCode.LAYER_NAME, textName);
+			dxffile.writeGroup(GroupCode.X_1, 0);
+			i = Math.min((int)(Math.min(lmin, dmin)/dshoulder)-3, 0);
+			dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
+			dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
+			dxffile.writeGroup(GroupCode.TEXT, "1 degree = "+xscale_factor+" mm");
 			
 			
 			dxffile.endSection();
