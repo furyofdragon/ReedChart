@@ -169,6 +169,17 @@ public class WriteDXF {
 			dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
 			dxffile.writeGroup(GroupCode.TEXT, "deg");
 			
+			// one radian
+			float radian = 57.3f;
+			dxffile.writeGroup(GroupCode.TYPE, "LINE");
+			dxffile.writeGroup(GroupCode.LAYER_NAME, gridName);
+			dxffile.writeGroup(GroupCode.COLOR, 1);	// red
+			dxffile.writeGroup(GroupCode.X_1, radian*xscale_factor);
+			dxffile.writeGroup(GroupCode.Y_1, ymin);
+			dxffile.writeGroup(GroupCode.X_2, radian*xscale_factor);
+			dxffile.writeGroup(GroupCode.Y_2, ymax);
+			
+			
 			// horizontal grid lines and labels
 			i = Math.min((int)(Math.min(lmin, dmin)/dshoulder)-1, 0);
 			while (i <= (int)(Math.max(lmax, dmax)/dshoulder)+1) {
