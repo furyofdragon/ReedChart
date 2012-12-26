@@ -29,22 +29,29 @@ public class Main {
 		
 		Display display = Display.getDefault();
 		final Shell shell = new Shell();
+		shell.setModified(true);
 		shell.setSize(435, 175);
-		shell.setMinimumSize(435, 175);
+		//shell.setMinimumSize(435, 175);
 		shell.setText(Messages.getString("Main.shell.text")); //$NON-NLS-1$
 		shell.setLayout(new GridLayout(3, false));
 		
 		Label LabelFileInput = new Label(shell, SWT.NONE);
-		LabelFileInput.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		GridData gd_LabelFileInput = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		gd_LabelFileInput.minimumHeight = -1;
+		gd_LabelFileInput.minimumWidth = -1;
+		LabelFileInput.setLayoutData(gd_LabelFileInput);
 		LabelFileInput.setText(Messages.getString("Main.LabelFileInput.text")); //$NON-NLS-1$
 		
 		textInputPath = new Text(shell, SWT.BORDER);
-		GridData gd_textInputPath = new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1);
+		GridData gd_textInputPath = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
 		gd_textInputPath.minimumWidth = 260;
 		textInputPath.setLayoutData(gd_textInputPath);
 		
 		Button ButtonBrowseInput = new Button(shell, SWT.NONE);
-		ButtonBrowseInput.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		GridData gd_ButtonBrowseInput = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		gd_ButtonBrowseInput.minimumWidth = -1;
+		gd_ButtonBrowseInput.minimumHeight = -1;
+		ButtonBrowseInput.setLayoutData(gd_ButtonBrowseInput);
 		ButtonBrowseInput.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				FileDialog fdOpen = new FileDialog(shell, SWT.OPEN);
@@ -57,16 +64,22 @@ public class Main {
 		ButtonBrowseInput.setText(Messages.getString("Main.ButtonBrowseInput.text")); //$NON-NLS-1$
 		
 		Label labelFileOutput = new Label(shell, SWT.NONE);
-		labelFileOutput.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		GridData gd_labelFileOutput = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		gd_labelFileOutput.minimumWidth = -1;
+		gd_labelFileOutput.minimumHeight = -1;
+		labelFileOutput.setLayoutData(gd_labelFileOutput);
 		labelFileOutput.setText(Messages.getString("Main.labelFileOutput.text")); //$NON-NLS-1$
 		
 		textOutputPath = new Text(shell, SWT.BORDER);
-		GridData gd_textOutputPath = new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1);
+		GridData gd_textOutputPath = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
 		gd_textOutputPath.minimumWidth = 260;
 		textOutputPath.setLayoutData(gd_textOutputPath);
 		
 		Button ButtonBrowseOuput = new Button(shell, SWT.NONE);
-		ButtonBrowseOuput.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		GridData gd_ButtonBrowseOuput = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		gd_ButtonBrowseOuput.minimumWidth = -1;
+		gd_ButtonBrowseOuput.minimumHeight = -1;
+		ButtonBrowseOuput.setLayoutData(gd_ButtonBrowseOuput);
 		ButtonBrowseOuput.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				FileDialog fdSave = new FileDialog(shell, SWT.SAVE);
@@ -80,7 +93,10 @@ public class Main {
 		new Label(shell, SWT.NONE);
 		
 		final Button ButtonCreateDXF = new Button(shell, SWT.NONE);
-		ButtonCreateDXF.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		GridData gd_ButtonCreateDXF = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		gd_ButtonCreateDXF.minimumWidth = -1;
+		gd_ButtonCreateDXF.minimumHeight = -1;
+		ButtonCreateDXF.setLayoutData(gd_ButtonCreateDXF);
 		ButtonCreateDXF.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				ReadSource.ReadDataSource(textInputPath.getText());
@@ -92,7 +108,9 @@ public class Main {
 		new Label(shell, SWT.NONE);
 		
 		Link link = new Link(shell, SWT.NONE);
-		GridData gd_link = new GridData(SWT.CENTER, SWT.BOTTOM, true, false, 2, 1);
+		GridData gd_link = new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1);
+		gd_link.minimumWidth = -1;
+		gd_link.minimumHeight = -1;
 		gd_link.widthHint = 359;
 		gd_link.verticalIndent = 5;
 		gd_link.horizontalIndent = 5;
