@@ -29,11 +29,12 @@ public class Main {
 		
 		Display display = Display.getDefault();
 		final Shell shell = new Shell();
-		shell.setModified(true);
 		shell.setSize(435, 175);
 		//shell.setMinimumSize(435, 175);
 		shell.setText(Messages.getString("Main.shell.text")); //$NON-NLS-1$
-		shell.setLayout(new GridLayout(3, false));
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 3;
+		shell.setLayout(gridLayout);
 		
 		Label LabelFileInput = new Label(shell, SWT.NONE);
 		GridData gd_LabelFileInput = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
@@ -108,7 +109,7 @@ public class Main {
 		new Label(shell, SWT.NONE);
 		
 		Link link = new Link(shell, SWT.NONE);
-		GridData gd_link = new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1);
+		GridData gd_link = new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1);
 		gd_link.minimumWidth = -1;
 		gd_link.minimumHeight = -1;
 		gd_link.widthHint = 359;
@@ -117,7 +118,7 @@ public class Main {
 		link.setLayoutData(gd_link);
 		link.setText(Messages.getString("Main.link.text")); //$NON-NLS-1$
 		new Label(shell, SWT.NONE);
-
+		
 		shell.open();
 		shell.layout();
 		while (!shell.isDisposed()) {
