@@ -180,6 +180,15 @@ public class WriteDXF {
 			dxffile.writeGroup(GroupCode.X_2, radian*xscale_factor);
 			dxffile.writeGroup(GroupCode.Y_2, ymax);
 			
+			dxffile.writeGroup(GroupCode.TYPE, "TEXT");
+			dxffile.writeGroup(GroupCode.LAYER_NAME, textName);
+			dxffile.writeGroup(GroupCode.COLOR, 1);	// red
+			dxffile.writeGroup(GroupCode.X_1, radian*xscale_factor);
+			dxffile.writeGroup(GroupCode.Y_1, ymax+dshoulder*yscale_factor);
+			dxffile.writeGroup(GroupCode.DOUBLE_1, textHeight);
+			dxffile.writeGroup(GroupCode.TEXT, "1 radian");
+			dxffile.writeGroup(GroupCode.ANGLE_1, 90);
+			
 			
 			// horizontal grid lines and labels
 			i = Math.min((int)(Math.min(lmin, dmin)/dshoulder)-1, 0);
