@@ -29,27 +29,28 @@ public class Main {
 		
 		Display display = Display.getDefault();
 		final Shell shell = new Shell();
-		shell.setSize(435, 175);
-		//shell.setMinimumSize(435, 175);
+		shell.setSize(470, 175);
+		shell.setMinimumSize(470, 175);
 		shell.setText(Messages.getString("Main.shell.text")); //$NON-NLS-1$
+		
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 3;
 		shell.setLayout(gridLayout);
 		
 		Label LabelFileInput = new Label(shell, SWT.NONE);
-		GridData gd_LabelFileInput = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		GridData gd_LabelFileInput = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_LabelFileInput.minimumHeight = -1;
 		gd_LabelFileInput.minimumWidth = -1;
 		LabelFileInput.setLayoutData(gd_LabelFileInput);
 		LabelFileInput.setText(Messages.getString("Main.LabelFileInput.text")); //$NON-NLS-1$
 		
 		textInputPath = new Text(shell, SWT.BORDER);
-		GridData gd_textInputPath = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		GridData gd_textInputPath = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
 		gd_textInputPath.minimumWidth = 260;
 		textInputPath.setLayoutData(gd_textInputPath);
 		
 		Button ButtonBrowseInput = new Button(shell, SWT.NONE);
-		GridData gd_ButtonBrowseInput = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		GridData gd_ButtonBrowseInput = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_ButtonBrowseInput.minimumWidth = -1;
 		gd_ButtonBrowseInput.minimumHeight = -1;
 		ButtonBrowseInput.setLayoutData(gd_ButtonBrowseInput);
@@ -65,19 +66,19 @@ public class Main {
 		ButtonBrowseInput.setText(Messages.getString("Main.ButtonBrowseInput.text")); //$NON-NLS-1$
 		
 		Label labelFileOutput = new Label(shell, SWT.NONE);
-		GridData gd_labelFileOutput = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		GridData gd_labelFileOutput = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_labelFileOutput.minimumWidth = -1;
 		gd_labelFileOutput.minimumHeight = -1;
 		labelFileOutput.setLayoutData(gd_labelFileOutput);
 		labelFileOutput.setText(Messages.getString("Main.labelFileOutput.text")); //$NON-NLS-1$
 		
 		textOutputPath = new Text(shell, SWT.BORDER);
-		GridData gd_textOutputPath = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		GridData gd_textOutputPath = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
 		gd_textOutputPath.minimumWidth = 260;
 		textOutputPath.setLayoutData(gd_textOutputPath);
 		
 		Button ButtonBrowseOuput = new Button(shell, SWT.NONE);
-		GridData gd_ButtonBrowseOuput = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		GridData gd_ButtonBrowseOuput = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_ButtonBrowseOuput.minimumWidth = -1;
 		gd_ButtonBrowseOuput.minimumHeight = -1;
 		ButtonBrowseOuput.setLayoutData(gd_ButtonBrowseOuput);
@@ -94,7 +95,7 @@ public class Main {
 		new Label(shell, SWT.NONE);
 		
 		final Button ButtonCreateDXF = new Button(shell, SWT.NONE);
-		GridData gd_ButtonCreateDXF = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		GridData gd_ButtonCreateDXF = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
 		gd_ButtonCreateDXF.minimumWidth = -1;
 		gd_ButtonCreateDXF.minimumHeight = -1;
 		ButtonCreateDXF.setLayoutData(gd_ButtonCreateDXF);
@@ -109,14 +110,14 @@ public class Main {
 		new Label(shell, SWT.NONE);
 		
 		Link link = new Link(shell, SWT.NONE);
-		GridData gd_link = new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1);
+		GridData gd_link = new GridData(SWT.FILL, SWT.TOP, true, false, 2, 1);
+		gd_link.widthHint = 200;
 		gd_link.minimumWidth = -1;
 		gd_link.minimumHeight = -1;
-		gd_link.widthHint = 359;
 		gd_link.verticalIndent = 5;
 		gd_link.horizontalIndent = 5;
 		link.setLayoutData(gd_link);
-		link.setText(Messages.getString("Main.link.text")); //$NON-NLS-1$
+		link.setText(Messages.getString("Main.link.text"));
 		new Label(shell, SWT.NONE);
 		
 		shell.open();
