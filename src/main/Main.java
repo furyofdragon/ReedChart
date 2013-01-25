@@ -1,5 +1,7 @@
 package main;
 
+import java.io.File;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -9,10 +11,12 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import messages.Messages;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Link;
+
+import messages.Messages;
+import swtlib.LoadSWT;
 
 public class Main {
 	private static Text textInputPath;
@@ -26,6 +30,9 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		File swtJar = new File(LoadSWT.getArchFilename("swtlib/swt"));
+		LoadSWT.addJarToClasspath(swtJar);
 		
 		Display display = Display.getDefault();
 		final Shell shell = new Shell();
