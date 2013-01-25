@@ -35,7 +35,7 @@ public class Main {
 		LoadSWT.addJarToClasspath(swtJar);
 		
 		Display display = Display.getDefault();
-		final Shell shell = new Shell();
+		final Shell shell = new Shell(SWT.CLOSE | SWT.MIN);
 		shell.setSize(470, 175);
 		shell.setMinimumSize(470, 175);
 		shell.setText(Messages.getString("Main.shell.text")); //$NON-NLS-1$
