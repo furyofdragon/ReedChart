@@ -25,6 +25,7 @@ public class MainForm {
 
 	/**
 	 * @param args
+	 * @wbp.parser.entryPoint
 	 */
 	public static void mainform(String[] args) {
 		
