@@ -14,6 +14,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Link;
 
 import messages.Messages;
+import org.eclipse.swt.widgets.Canvas;
 
 public class MainForm {
 	private static Text textInputPath;
@@ -31,13 +32,18 @@ public class MainForm {
 		
 		Display display = Display.getDefault();
 		final Shell shell = new Shell(SWT.CLOSE | SWT.MIN);
-		shell.setSize(470, 175);
-		shell.setMinimumSize(470, 175);
+		shell.setSize(640, 480);
+		shell.setMinimumSize(640, 480);
 		shell.setText(Messages.getString("Main.shell.text")); //$NON-NLS-1$
 		
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 3;
 		shell.setLayout(gridLayout);
+		
+		Canvas canvas = new Canvas(shell, SWT.NONE);
+		GridData gd_canvas = new GridData(SWT.FILL, SWT.FILL, false, false, 3, 1);
+		gd_canvas.heightHint = 302;
+		canvas.setLayoutData(gd_canvas);
 		
 		Label LabelFileInput = new Label(shell, SWT.NONE);
 		GridData gd_LabelFileInput = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
