@@ -2,6 +2,7 @@ package main;
 
 import java.awt.EventQueue;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -9,6 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JInternalFrame;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class MainFormSwing {
 
@@ -48,23 +54,52 @@ public class MainFormSwing {
 		frmReedChart.setBounds(100, 100, 640, 480);
 		frmReedChart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel link = new JLabel("This program created by Lysakov I in SeaTech ltd and contains code from http://sourceforge.net/projects/jdxf/\r\ndistributed under GPL license.");
+		JLabel link = new JLabel("About");
+		link.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JButton btnNewButton = new JButton("Create DXF");
+		final JButton ButtonCreateDXF = new JButton("Create DXF");
+		ButtonCreateDXF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
-		JLabel labelFileOutput = new JLabel("File output");
+		JLabel LabelFileOutput = new JLabel("File output");
 		
 		JLabel LabelFileInput = new JLabel("File input");
 		
 		textOutputPath = new JTextField();
+		LabelFileOutput.setLabelFor(textOutputPath);
 		textOutputPath.setColumns(10);
 		
 		textInputPath = new JTextField();
+		LabelFileInput.setLabelFor(textInputPath);
 		textInputPath.setColumns(10);
 		
 		JButton ButtonBrowseInput = new JButton("Browse");
+		ButtonBrowseInput.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".str", "STR", "str"));
+				int ret = fileChooser.showOpenDialog(fileChooser);
+				if (ret == JFileChooser.APPROVE_OPTION) {
+					textInputPath.setText(fileChooser.getSelectedFile().getAbsolutePath());
+					//ButtonCreateDXF.setText(beforeCreateDXFString);
+				}
+			}
+		});
 		
 		JButton ButtonBrowseOuput = new JButton("Browse");
+		ButtonBrowseOuput.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Autocad DXF file", "DXF", "dxf"));
+				int ret = fileChooser.showSaveDialog(fileChooser);
+				if (ret == JFileChooser.APPROVE_OPTION) {
+					textOutputPath.setText(fileChooser.getSelectedFile().getAbsolutePath());
+					//ButtonCreateDXF.setText(beforeCreateDXFString);
+				}
+			}
+		});
 		
 		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
 		internalFrame.setVisible(true);
@@ -78,14 +113,18 @@ public class MainFormSwing {
 						.addComponent(internalFrame, GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(labelFileOutput)
+								.addComponent(LabelFileOutput)
 								.addComponent(LabelFileInput))
 							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
-								.addComponent(textInputPath, Alignment.LEADING, 426, 426, 426)
-								.addComponent(textOutputPath, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
-							.addGap(18)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(textInputPath, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+									.addGap(18))
+								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+										.addComponent(textOutputPath, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+										.addComponent(ButtonCreateDXF, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
+									.addGap(18)))
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 								.addComponent(ButtonBrowseOuput, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
 								.addComponent(ButtonBrowseInput, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))))
@@ -99,15 +138,15 @@ public class MainFormSwing {
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(LabelFileInput)
-						.addComponent(textInputPath, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textInputPath, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 						.addComponent(ButtonBrowseInput))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(labelFileOutput)
-						.addComponent(textOutputPath, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(LabelFileOutput)
+						.addComponent(textOutputPath, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 						.addComponent(ButtonBrowseOuput))
 					.addGap(18)
-					.addComponent(btnNewButton)
+					.addComponent(ButtonCreateDXF)
 					.addGap(18)
 					.addComponent(link, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap())
