@@ -19,6 +19,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.SwingConstants;
 
+import xchart.Xchart;
 import messages.Messages;
 
 public class MainFormSwing {
@@ -49,6 +50,7 @@ public class MainFormSwing {
 	public MainFormSwing() {
 		initialize();
 		initializeLF();
+		Xchart.ShowChart();
 	}
 
 	private void initializeLF() {
