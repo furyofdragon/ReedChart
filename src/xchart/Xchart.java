@@ -1,14 +1,23 @@
 package xchart;
 
+import javax.swing.JPanel;
+
+import main.MainFormSwing;
 import main.ReadSource;
 
 import com.xeiam.xchart.Chart;
 import com.xeiam.xchart.ChartBuilder;
 import com.xeiam.xchart.StyleManager.ChartType;
 import com.xeiam.xchart.StyleManager.LegendPosition;
-import com.xeiam.xchart.SwingWrapper;
+import com.xeiam.xchart.XChartPanel;
 
-public class Xchart {
+public class Xchart extends XChartPanel{
+	
+	public Xchart(Chart chart) {
+		super(chart);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * Creates a simple Chart using QuickChart
 	 */
@@ -34,7 +43,13 @@ public class Xchart {
 		chart.getStyleManager().setAxisTitlesVisible(true);
 		
 		// Show it
-		new SwingWrapper(chart).displayChart();
+		new Xchart(chart).displayChart(MainFormSwing.getPanel());
 	
 	}
+
+	private void displayChart(JPanel Panel) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
