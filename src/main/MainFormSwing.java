@@ -16,6 +16,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
+import messages.Messages;
+
 public class MainFormSwing {
 
 	private JFrame frmReedChart;
@@ -50,22 +52,26 @@ public class MainFormSwing {
 	 */
 	private void initialize() {
 		frmReedChart = new JFrame();
-		frmReedChart.setTitle("Reed chart");
+		frmReedChart.setTitle(Messages.getString("Main.shell.text")); //$NON-NLS-1$
 		frmReedChart.setBounds(100, 100, 640, 480);
 		frmReedChart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel link = new JLabel("About");
+		JLabel link = new JLabel(Messages.getString("Main.link.text")); //$NON-NLS-1$
 		link.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		final JButton ButtonCreateDXF = new JButton("Create DXF");
 		ButtonCreateDXF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ReadSource.ReadDataSource(textInputPath.getText());
+				WriteDXF.WriteToDXF(textOutputPath.getText());
+				ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXFPressed.text"));
 			}
 		});
+		ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXF.text")); //$NON-NLS-1$
 		
-		JLabel LabelFileOutput = new JLabel("File output");
+		JLabel LabelFileOutput = new JLabel(Messages.getString("Main.LabelFileOutput.text")); //$NON-NLS-1$
 		
-		JLabel LabelFileInput = new JLabel("File input");
+		JLabel LabelFileInput = new JLabel(Messages.getString("Main.LabelFileInput.text")); //$NON-NLS-1$
 		
 		textOutputPath = new JTextField();
 		LabelFileOutput.setLabelFor(textOutputPath);
@@ -75,7 +81,7 @@ public class MainFormSwing {
 		LabelFileInput.setLabelFor(textInputPath);
 		textInputPath.setColumns(10);
 		
-		JButton ButtonBrowseInput = new JButton("Browse");
+		JButton ButtonBrowseInput = new JButton(Messages.getString("Main.ButtonBrowseInput.text")); //$NON-NLS-1$
 		ButtonBrowseInput.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
@@ -88,7 +94,7 @@ public class MainFormSwing {
 			}
 		});
 		
-		JButton ButtonBrowseOuput = new JButton("Browse");
+		JButton ButtonBrowseOuput = new JButton(Messages.getString("Main.ButtonBrowseOuput.text")); //$NON-NLS-1$
 		ButtonBrowseOuput.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
@@ -101,7 +107,7 @@ public class MainFormSwing {
 			}
 		});
 		
-		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
+		JInternalFrame internalFrame = new JInternalFrame(Messages.getString("Main.internalFrame.title")); //$NON-NLS-1$
 		internalFrame.setVisible(true);
 		GroupLayout groupLayout = new GroupLayout(frmReedChart.getContentPane());
 		groupLayout.setHorizontalGroup(
