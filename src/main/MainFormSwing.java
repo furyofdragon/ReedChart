@@ -19,13 +19,17 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 import messages.Messages;
+
 import javax.swing.JPanel;
+
+import chart.Chart;
 
 public class MainFormSwing {
 
 	private JFrame frmReedChart;
 	private JTextField textOutputPath;
 	private JTextField textInputPath;
+	public static JPanel ChartPanel;
 
 	/**
 	 * Launch the application.
@@ -138,10 +142,11 @@ public class MainFormSwing {
 		ButtonPreview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ReadSource.ReadDataSource(textInputPath.getText());
+				Chart.ShowChart();
 			}
 		});
 		
-		JPanel ChartPanel = new JPanel();
+		ChartPanel = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(frmReedChart.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -189,6 +194,16 @@ public class MainFormSwing {
 					.addComponent(link)
 					.addContainerGap())
 		);
+		GroupLayout gl_ChartPanel = new GroupLayout(ChartPanel);
+		gl_ChartPanel.setHorizontalGroup(
+			gl_ChartPanel.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 612, Short.MAX_VALUE)
+		);
+		gl_ChartPanel.setVerticalGroup(
+			gl_ChartPanel.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 276, Short.MAX_VALUE)
+		);
+		ChartPanel.setLayout(gl_ChartPanel);
 		frmReedChart.getContentPane().setLayout(groupLayout);
 	}
 }
