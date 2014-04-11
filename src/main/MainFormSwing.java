@@ -137,6 +137,7 @@ public class MainFormSwing {
 		JButton ButtonPreview = new JButton(Messages.getString("MainFormSwing.btnNewButton.text")); //$NON-NLS-1$
 		ButtonPreview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ReadSource.ReadDataSource(textInputPath.getText());
 				Xchart.ShowChart();
 			}
 		});
