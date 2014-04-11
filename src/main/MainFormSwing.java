@@ -109,8 +109,8 @@ public class MainFormSwing {
 			}
 		});
 		
-		JInternalFrame internalFrame = new JInternalFrame(Messages.getString("Main.internalFrame.title")); //$NON-NLS-1$
-		internalFrame.setVisible(true);
+		JInternalFrame internalFrame = new JInternalFrame(Messages.getString("Main.internalFrame.title"));
+		internalFrame.setVisible(false);
 		GroupLayout groupLayout = new GroupLayout(frmReedChart.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
