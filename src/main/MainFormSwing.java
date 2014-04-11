@@ -56,7 +56,9 @@ public class MainFormSwing {
 		frmReedChart.setBounds(100, 100, 640, 480);
 		frmReedChart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel link = new JLabel(Messages.getString("Main.link.text")); //$NON-NLS-1$
+		JLabel link = new JLabel("About");
+		link.setToolTipText(Messages.getString("Main.link.text")); //$NON-NLS-1$
+		link.setEnabled(false);
 		link.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		final JButton ButtonCreateDXF = new JButton("Create DXF");
@@ -122,15 +124,11 @@ public class MainFormSwing {
 								.addComponent(LabelFileOutput)
 								.addComponent(LabelFileInput))
 							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(textInputPath, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
-									.addGap(18))
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addComponent(textOutputPath, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
-										.addComponent(ButtonCreateDXF, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
-									.addGap(18)))
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(textInputPath, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+								.addComponent(textOutputPath, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+								.addComponent(ButtonCreateDXF, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
+							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 								.addComponent(ButtonBrowseOuput, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
 								.addComponent(ButtonBrowseInput, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))))
@@ -154,7 +152,7 @@ public class MainFormSwing {
 					.addGap(18)
 					.addComponent(ButtonCreateDXF)
 					.addGap(18)
-					.addComponent(link, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(link)
 					.addContainerGap())
 		);
 		frmReedChart.getContentPane().setLayout(groupLayout);
