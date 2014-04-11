@@ -40,9 +40,14 @@ public class Chart {
 		ChartPanel chartPanel = new ChartPanel(chart);
 		
 		//MainFormSwing.ChartPanel.add(chartPanel);
+		//MainFormSwing.ChartPanel.setVisible(true);
+		//chartPanel.setVisible(true);
+		//MainFormSwing.ChartPanel.repaint();
 		
 		JFrame frm = new JFrame();
 		frm.add(chartPanel);
+		frm.setVisible(true);
+		
 	}
 
 }

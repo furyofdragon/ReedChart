@@ -147,6 +147,7 @@ public class MainFormSwing {
 		});
 		
 		ChartPanel = new JPanel();
+		
 		GroupLayout groupLayout = new GroupLayout(frmReedChart.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
