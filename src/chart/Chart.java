@@ -1,5 +1,6 @@
 package chart;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import org.jfree.chart.ChartFactory;
@@ -37,16 +38,21 @@ public class Chart {
 		dataset.addSeries(dserie);
 		JFreeChart chart = ChartFactory.createXYLineChart(null, "theta", "l, d, m", dataset);
 		
-		ChartPanel chartPanel = new ChartPanel(chart);
+		ChartPanel chartPanel = new ChartPanel(chart);		
 		
 		//MainFormSwing.ChartPanel.add(chartPanel);
 		//MainFormSwing.ChartPanel.setVisible(true);
 		//chartPanel.setVisible(true);
+		//MainFormSwing.ChartPanel.validate();
 		//MainFormSwing.ChartPanel.repaint();
 		
-		JFrame frm = new JFrame();
-		frm.add(chartPanel);
-		frm.setVisible(true);
+		MainFormSwing.ChartPanel.add(chartPanel);
+		MainFormSwing.ChartPanel.revalidate();
+		MainFormSwing.ChartPanel.setVisible(true);
+		
+		//JFrame frm = new JFrame();
+		//frm.add(chartPanel);
+		//frm.setVisible(true);
 		
 	}
 

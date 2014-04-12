@@ -23,6 +23,8 @@ import messages.Messages;
 import javax.swing.JPanel;
 
 import chart.Chart;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 public class MainFormSwing {
 
@@ -195,16 +197,7 @@ public class MainFormSwing {
 					.addComponent(link)
 					.addContainerGap())
 		);
-		GroupLayout gl_ChartPanel = new GroupLayout(ChartPanel);
-		gl_ChartPanel.setHorizontalGroup(
-			gl_ChartPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 612, Short.MAX_VALUE)
-		);
-		gl_ChartPanel.setVerticalGroup(
-			gl_ChartPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 276, Short.MAX_VALUE)
-		);
-		ChartPanel.setLayout(gl_ChartPanel);
+		ChartPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		frmReedChart.getContentPane().setLayout(groupLayout);
 	}
 }
