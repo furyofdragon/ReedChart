@@ -6,14 +6,14 @@
 	<classpathentry exported="true" kind="lib" path="src/swtlib/swt-3.7.2-gtk-linux-x86_64.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/swtlib/swt-3.7.2-gtk-linux-x86.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/swtlib/swt-3.7.2-win32-x86_64.jar"/>
-	<classpathentry kind="lib" path="src/jfreechart/gnujaxp.jar"/>
-	<classpathentry kind="lib" path="src/jfreechart/iText-2.1.5.jar"/>
-	<classpathentry kind="lib" path="src/jfreechart/jcommon-1.0.17.jar"/>
-	<classpathentry kind="lib" path="src/jfreechart/jfreechart-1.0.14-experimental.jar"/>
-	<classpathentry kind="lib" path="src/jfreechart/jfreechart-1.0.14-swt.jar"/>
-	<classpathentry kind="lib" path="src/jfreechart/jfreechart-1.0.14.jar"/>
-	<classpathentry kind="lib" path="src/jfreechart/junit.jar"/>
-	<classpathentry kind="lib" path="src/jfreechart/servlet.jar"/>
-	<classpathentry kind="lib" path="src/jfreechart/swtgraphics2d.jar"/>
+	<classpathentry kind="lib" path="D:/_Docs/MyPrograms/workspace/jfreechart-1.0.14/lib/gnujaxp.jar"/>
+	<classpathentry kind="lib" path="D:/_Docs/MyPrograms/workspace/jfreechart-1.0.14/lib/iText-2.1.5.jar"/>
+	<classpathentry kind="lib" path="D:/_Docs/MyPrograms/workspace/jfreechart-1.0.14/lib/jcommon-1.0.17.jar"/>
+	<classpathentry kind="lib" path="D:/_Docs/MyPrograms/workspace/jfreechart-1.0.14/lib/jfreechart-1.0.14.jar"/>
+	<classpathentry kind="lib" path="D:/_Docs/MyPrograms/workspace/jfreechart-1.0.14/lib/jfreechart-1.0.14-experimental.jar"/>
+	<classpathentry kind="lib" path="D:/_Docs/MyPrograms/workspace/jfreechart-1.0.14/lib/jfreechart-1.0.14-swt.jar"/>
+	<classpathentry kind="lib" path="D:/_Docs/MyPrograms/workspace/jfreechart-1.0.14/lib/junit.jar"/>
+	<classpathentry kind="lib" path="D:/_Docs/MyPrograms/workspace/jfreechart-1.0.14/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="D:/_Docs/MyPrograms/workspace/jfreechart-1.0.14/lib/swtgraphics2d.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
