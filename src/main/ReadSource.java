@@ -91,7 +91,7 @@ public class ReadSource {
 		return N;
 	}
 	
-	public static float[][] getDataArray() {
+	static float[][] getDataArray() {
 		return thetald;
 	}
 	
