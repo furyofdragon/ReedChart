@@ -23,7 +23,7 @@ import messages.Messages;
 import javax.swing.JPanel;
 
 import chart.Chart;
-import java.awt.FlowLayout;
+
 import java.awt.GridLayout;
 
 public class MainFormSwing {
