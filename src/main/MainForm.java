@@ -14,13 +14,11 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Link;
 
 import messages.Messages;
-import org.eclipse.swt.widgets.Composite;
-import org.jfree.experimental.chart.swt.ChartComposite;
+import org.eclipse.swt.widgets.Canvas;
 
 public class MainForm {
 	private static Text textInputPath;
 	private static Text textOutputPath;
-	static ChartComposite composite;
 
 	public MainForm() {
 		// TODO Auto-generated constructor stub
@@ -42,14 +40,10 @@ public class MainForm {
 		gridLayout.numColumns = 3;
 		shell.setLayout(gridLayout);
 		
-		ChartPreview.chart();
-		
-		composite = new ChartComposite(shell, SWT.NONE);
-		GridData gd_composite = new GridData(SWT.FILL, SWT.FILL, false, false, 3, 1);
-		gd_composite.heightHint = 320;
-		composite.setLayoutData(gd_composite);
-		composite.setLayout(new GridLayout(1, false));
-		
+		Canvas canvas = new Canvas(shell, SWT.NONE);
+		GridData gd_canvas = new GridData(SWT.FILL, SWT.FILL, false, false, 3, 1);
+		gd_canvas.heightHint = 302;
+		canvas.setLayoutData(gd_canvas);
 		
 		Label LabelFileInput = new Label(shell, SWT.NONE);
 		GridData gd_LabelFileInput = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
