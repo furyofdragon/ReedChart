@@ -20,14 +20,12 @@ import javax.swing.SwingConstants;
 
 import xchart.Xchart;
 import messages.Messages;
-import javax.swing.JPanel;
 
 public class MainFormSwing {
 
-	private JFrame     frmReedChart;
+	private JFrame frmReedChart;
 	private JTextField textOutputPath;
 	private JTextField textInputPath;
-	private static JPanel ChartPanel;
 
 	/**
 	 * Launch the application.
@@ -136,24 +134,21 @@ public class MainFormSwing {
 			}
 		});
 		
-		JButton ButtonPreview = new JButton(Messages.getString("Main.ButtonPreview.text")); //$NON-NLS-1$
+		JButton ButtonPreview = new JButton(Messages.getString("MainFormSwing.btnNewButton.text")); //$NON-NLS-1$
 		ButtonPreview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ReadSource.ReadDataSource(textInputPath.getText());
 				Xchart.ShowChart();
 			}
 		});
-		
-		ChartPanel = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(frmReedChart.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(ChartPanel, GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
-						.addComponent(link, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 612, Short.MAX_VALUE)
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(link, GroupLayout.PREFERRED_SIZE, 612, Short.MAX_VALUE)
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(LabelFileOutput)
 								.addComponent(LabelFileInput))
@@ -172,9 +167,7 @@ public class MainFormSwing {
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(ChartPanel, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-					.addGap(18)
+					.addContainerGap(305, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(LabelFileInput)
 						.addComponent(textInputPath, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
@@ -193,10 +186,5 @@ public class MainFormSwing {
 					.addContainerGap())
 		);
 		frmReedChart.getContentPane().setLayout(groupLayout);
-	}
-	
-	public static JPanel getPanel() {
-		return ChartPanel;
-		
 	}
 }
