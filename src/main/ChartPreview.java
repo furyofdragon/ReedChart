@@ -1,10 +1,13 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Frame;
 
 //import javax.swing.JFrame;
 
+import org.eclipse.swt.awt.SWT_AWT;
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYDataset;

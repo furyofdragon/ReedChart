@@ -14,6 +14,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Link;
 
 import messages.Messages;
+import org.eclipse.swt.widgets.Composite;
 import org.jfree.experimental.chart.swt.ChartComposite;
 
 public class MainForm {
