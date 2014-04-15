@@ -15,6 +15,7 @@ public class ReadSource {
 	
 	static void ReadDataSource(String strFileName) {
 		
+		N = 0;
 		String line = null;
 		String tableSeparator = "--------------------------------------------------------------------------------------------------------";
 
