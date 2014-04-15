@@ -27,8 +27,10 @@ public class WriteDXF {
 		int dtheta = 5;				// in degrees
 		float dshoulder;
 		
-		String staticShouldersName = "Static shoulders";
-		String dynamicShouldersName = "Dynamic shoulders";
+		//String staticShouldersName = "Static shoulders";
+		//String dynamicShouldersName = "Dynamic shoulders";
+		String staticShouldersName  = "S_s";
+		String dynamicShouldersName = "D_s";
 		String gridName = "Grid";
 		String textName = "Text";
 		
