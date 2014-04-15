@@ -120,9 +120,11 @@ public class MainFormSwing {
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".str", "STR", "str"));
 				int ret = fileChooser.showOpenDialog(fileChooser);
 				if (ret == JFileChooser.APPROVE_OPTION) {
-					textInputPath.setText(fileChooser.getSelectedFile().getAbsolutePath());
+					String PathString = fileChooser.getSelectedFile().getAbsolutePath();
+					textInputPath.setText(PathString);
+					int i = PathString.lastIndexOf('.');
+					textOutputPath.setText(PathString.substring(0, i) + ".dxf");
 					ReadSource.ReadDataSource(textInputPath.getText());
-					//Chart.DeleteChart();
 					Chart.ShowChart();
 					ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXF.text"));
 				}
@@ -136,7 +138,15 @@ public class MainFormSwing {
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Autocad DXF file", "DXF", "dxf"));
 				int ret = fileChooser.showSaveDialog(fileChooser);
 				if (ret == JFileChooser.APPROVE_OPTION) {
-					textOutputPath.setText(fileChooser.getSelectedFile().getAbsolutePath());
+					String PathString = fileChooser.getSelectedFile().getAbsolutePath();
+					int i = PathString.lastIndexOf('.');
+					int l = PathString.length();
+					if (i == l-3) {
+						textOutputPath.setText(PathString);
+					}
+					else {
+						textOutputPath.setText(PathString + ".dxf");
+					}
 				}
 			}
 		});
