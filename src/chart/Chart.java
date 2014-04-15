@@ -57,5 +57,9 @@ public class Chart {
 		MainFormSwing.ChartPanel.setVisible(true);
 		
 	}
+	
+	public static void DeleteChart() {
+		
+	}
 
 }
