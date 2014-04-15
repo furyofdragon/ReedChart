@@ -14,6 +14,7 @@ import main.MainFormSwing;
 import main.ReadSource;
 
 public class Chart {
+	
 	public static void ShowChart() {
 		// get data for chart
 		float[][] thetald = ReadSource.getDataArray();
@@ -51,14 +52,11 @@ public class Chart {
 		
 		
 		// visualize
-		ChartPanel chartPanel = new ChartPanel(chart);		
+		ChartPanel chartPanel = new ChartPanel(chart);
+		MainFormSwing.ChartPanel.removeAll();
 		MainFormSwing.ChartPanel.add(chartPanel);
 		MainFormSwing.ChartPanel.revalidate();
 		MainFormSwing.ChartPanel.setVisible(true);
-		
-	}
-	
-	public static void DeleteChart() {
 		
 	}
 

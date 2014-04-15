@@ -122,6 +122,7 @@ public class MainFormSwing {
 				if (ret == JFileChooser.APPROVE_OPTION) {
 					textInputPath.setText(fileChooser.getSelectedFile().getAbsolutePath());
 					ReadSource.ReadDataSource(textInputPath.getText());
+					//Chart.DeleteChart();
 					Chart.ShowChart();
 					ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXF.text"));
 				}
