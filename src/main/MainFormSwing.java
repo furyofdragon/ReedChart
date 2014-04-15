@@ -117,6 +117,7 @@ public class MainFormSwing {
 		ButtonBrowseInput.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".doc", "DOC", "doc"));
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".str", "STR", "str"));
 				int ret = fileChooser.showOpenDialog(fileChooser);
 				if (ret == JFileChooser.APPROVE_OPTION) {
