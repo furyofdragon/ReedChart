@@ -27,10 +27,8 @@ public class WriteDXF {
 		int dtheta = 5;				// in degrees
 		float dshoulder;
 		
-		//String staticShouldersName = "Static shoulders";
-		//String dynamicShouldersName = "Dynamic shoulders";
-		String staticShouldersName  = "S_s";
-		String dynamicShouldersName = "D_s";
+		String staticShouldersName = "Static shoulders";
+		String dynamicShouldersName = "Dynamic shoulders";
 		String gridName = "Grid";
 		String textName = "Text";
 		
@@ -66,14 +64,20 @@ public class WriteDXF {
 		File dxfFile = new File(dxfFileName);
 		try {
 			DXFWriter dxffile = new DXFWriter(dxfFile);
+			
+			/*
 			dxffile.startSection("HEADER");
+			dxffile.writeGroup(GroupCode.GC9, "$ACADVER");
+			dxffile.writeGroup(GroupCode.GC1, "AC1009");
+			dxffile.writeGroup(GroupCode.GC9, "$DWGCODEPAGE");
+			dxffile.writeGroup(GroupCode.GC3, "ANSI_1252");
 			dxffile.endSection();
 			
 			dxffile.startSection("TABLES");
 			dxffile.writeGroup(GroupCode.TYPE, "TABLE");
 			dxffile.writeGroup(GroupCode.NAME, "LAYER");
-			dxffile.writeGroup(GroupCode.HANDLE, "");
-			dxffile.writeGroup(GroupCode.SUBCLASS_DATA_MARKER, "");
+			dxffile.writeGroup(GroupCode.HANDLE, "HDL");
+			dxffile.writeGroup(GroupCode.SUBCLASS_DATA_MARKER, "SCDM");
 			dxffile.writeGroup(GroupCode.INT_1, 10);	// maximum rows in table
 			dxffile.writeGroup(GroupCode.TYPE, "LAYER");
 			dxffile.writeGroup(GroupCode.NAME, staticShouldersName);
@@ -89,14 +93,14 @@ public class WriteDXF {
 			dxffile.writeGroup(GroupCode.COLOR, 4);		// blue
 			dxffile.writeGroup(GroupCode.TYPE, "ENDTAB");
 			dxffile.endSection();
-			
+			*/
 			
 			dxffile.startSection("ENTITIES");
 			
 			
 			dxffile.writeGroup(GroupCode.TYPE, "POLYLINE");
 			dxffile.writeGroup(GroupCode.LAYER_NAME, staticShouldersName);
-			dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
+			dxffile.writeGroup(GroupCode.COLOR, 2);	// color by layer 256 // yellow 2
 			dxffile.writeGroup(GroupCode.ENTITIES_FOLLOW_FLAG, 1);
 			dxffile.writeGroup(GroupCode.X_1, 0);
 			dxffile.writeGroup(GroupCode.Y_1, 0);
@@ -116,7 +120,7 @@ public class WriteDXF {
 			
 			dxffile.writeGroup(GroupCode.TYPE, "POLYLINE");
 			dxffile.writeGroup(GroupCode.LAYER_NAME, dynamicShouldersName);
-			dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
+			dxffile.writeGroup(GroupCode.COLOR, 3);	// color by layer 256 // green 3
 			dxffile.writeGroup(GroupCode.ENTITIES_FOLLOW_FLAG, 1);
 			dxffile.writeGroup(GroupCode.X_1, 0);
 			dxffile.writeGroup(GroupCode.Y_1, 0);
@@ -150,7 +154,7 @@ public class WriteDXF {
 			while (i <= (int)(thetamax/dtheta)+1) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, gridName);
-				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
+				dxffile.writeGroup(GroupCode.COLOR, 9);	// color by layer 256 // grey 6
 				dxffile.writeGroup(GroupCode.X_1, i*dtheta*xscale_factor);
 				dxffile.writeGroup(GroupCode.Y_1, ymin);
 				dxffile.writeGroup(GroupCode.X_2, i*dtheta*xscale_factor);
@@ -197,7 +201,7 @@ public class WriteDXF {
 			while (i <= (int)(Math.max(lmax, dmax)/dshoulder)+1) {
 				dxffile.writeGroup(GroupCode.TYPE, "LINE");
 				dxffile.writeGroup(GroupCode.LAYER_NAME, gridName);
-				dxffile.writeGroup(GroupCode.COLOR, 256);	// color by layer
+				dxffile.writeGroup(GroupCode.COLOR, 9);	// color by layer 256 // grey
 				dxffile.writeGroup(GroupCode.X_1, xmin);
 				dxffile.writeGroup(GroupCode.Y_1, i*dshoulder*yscale_factor);
 				dxffile.writeGroup(GroupCode.X_2, xmax);
