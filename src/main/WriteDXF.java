@@ -68,7 +68,7 @@ public class WriteDXF {
 			/*
 			dxffile.startSection("HEADER");
 			dxffile.writeGroup(GroupCode.GC9, "$ACADVER");
-			dxffile.writeGroup(GroupCode.GC1, "AC1009");
+			dxffile.writeGroup(GroupCode.GC1, "AC1009");  // dxf_14
 			dxffile.writeGroup(GroupCode.GC9, "$DWGCODEPAGE");
 			dxffile.writeGroup(GroupCode.GC3, "ANSI_1252");
 			dxffile.endSection();
