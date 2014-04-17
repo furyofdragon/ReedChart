@@ -11,6 +11,8 @@ import java.util.StringTokenizer;
 
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
+import org.apache.poi.hwpf.usermodel.Bookmark;
+import org.apache.poi.hwpf.usermodel.Range;
 
 public class ReadSource {
 	
@@ -96,15 +98,35 @@ public class ReadSource {
 		try {
 			FileInputStream fis=new FileInputStream(strFileName);
 			try {
-				HWPFDocument document=new HWPFDocument(fis);
-				WordExtractor extractor = new WordExtractor(document);
-				String[] fileData = extractor.getParagraphText();
-				PrintWriter pw = new PrintWriter("res.txt");
-				for(int i=0;i<fileData.length;i++){
-					pw.println(fileData[i]);
+				HWPFDocument document = new HWPFDocument(fis);
+				
+				int t_start = 0;
+				int t_end = 0;
+				int l_start = 0;
+				int l_end = 0;
+				int d_start = 0;
+				int d_end = 0;
+				
+				int nBookmarks = document.getBookmarks().getBookmarksCount();
+				for (int i = 0; i < nBookmarks; i++) {
+					Bookmark bookmark = document.getBookmarks().getBookmark(i);
+					if (bookmark.getName().equals("TS_HEELANGLE")) t_start = bookmark.getStart();
+					if (bookmark.getName().equals("TS_TRIMANGLE")) t_end = bookmark.getStart();
+					if (bookmark.getName().equals("TS_ARMSOFSTATSTABWALLOW")) l_start = bookmark.getStart();
+					if (bookmark.getName().equals("TS_ARMOFDYNSTAB")) l_end = bookmark.getStart();
+					if (bookmark.getName().equals("TS_ARMOFDYNSTAB")) d_start = bookmark.getStart();
+					if (bookmark.getName().equals("TS_DECKELEV")) d_end = bookmark.getStart();
 				}
+				
+				Range rangeT = new Range(t_start, t_end, document);
+				Range rangeL = new Range(l_start, l_end, document);
+				Range rangeD = new Range(d_start, d_end, document);
+				
+				PrintWriter pw = new PrintWriter("res.txt");
+				pw.println(rangeT.text());
+				pw.println(rangeL.text());
+				pw.println(rangeD.text());
 				pw.close();
-				extractor.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
