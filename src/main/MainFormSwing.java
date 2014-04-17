@@ -125,7 +125,17 @@ public class MainFormSwing {
 					textInputPath.setText(PathString);
 					int i = PathString.lastIndexOf('.');
 					textOutputPath.setText(PathString.substring(0, i) + ".dxf");
-					ReadSource.ReadDataSource(textInputPath.getText());
+					String fileExt = PathString.substring(i+1);
+					
+					if (fileExt.equalsIgnoreCase("doc")) {
+						ReadSource.ReadDataSourceDoc(textInputPath.getText());
+					}
+					else {
+					if (fileExt.equalsIgnoreCase("txt")) {
+						ReadSource.ReadDataSourceTxt(textInputPath.getText());
+					}
+					}
+					
 					Chart.ShowChart();
 					ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXF.text"));
 				}

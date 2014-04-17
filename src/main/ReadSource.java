@@ -1,19 +1,23 @@
 package main;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-//import java.io.PrintWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
+import org.apache.poi.hwpf.HWPFDocument;
+import org.apache.poi.hwpf.extractor.WordExtractor;
 
 public class ReadSource {
 	
 	static float thetald[][];
 	static int N = 0;
 	
-	static void ReadDataSource(String strFileName) {
+	static void ReadDataSourceTxt(String strFileName) {
 		
 		N = 0;
 		String line = null;
@@ -86,6 +90,29 @@ public class ReadSource {
 		}
 		*/
 		
+	}
+	
+	static void ReadDataSourceDoc(String strFileName) {
+		try {
+			FileInputStream fis=new FileInputStream(strFileName);
+			try {
+				HWPFDocument document=new HWPFDocument(fis);
+				WordExtractor extractor = new WordExtractor(document);
+				String[] fileData = extractor.getParagraphText();
+				PrintWriter pw = new PrintWriter("res.txt");
+				for(int i=0;i<fileData.length;i++){
+					pw.println(fileData[i]);
+				}
+				pw.close();
+				extractor.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	static int getArrayDimension() {
