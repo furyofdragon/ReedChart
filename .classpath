@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="lib/jfreechart/servlet.jar"/>
 	<classpathentry kind="lib" path="lib/jfreechart/swtgraphics2d.jar"/>
 	<classpathentry kind="lib" path="lib/apache-poi/poi-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="lib/apache-poi/poi-scratchpad-3.10-FINAL-20140208.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
