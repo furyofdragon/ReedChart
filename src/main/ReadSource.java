@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import org.apache.poi.hwpf.HWPFDocument;
-import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.hwpf.usermodel.Bookmark;
 import org.apache.poi.hwpf.usermodel.Range;
 
@@ -122,10 +121,33 @@ public class ReadSource {
 				Range rangeL = new Range(l_start, l_end, document);
 				Range rangeD = new Range(d_start, d_end, document);
 				
+				int N1 = Math.min(rangeT.numParagraphs(), rangeL.numParagraphs());
+				int N2 = Math.min(rangeT.numParagraphs(), rangeD.numParagraphs());
+				N = Math.min(N1, N2);
+				
+				thetald = new float[N][3];
+				
+				/*
+				for (int i = 0; i < N; i++){
+					thetald[i][0] = Float.parseFloat(rangeT.getParagraph(i).toString());
+					thetald[i][1] = Float.parseFloat(rangeL.getParagraph(i).toString());
+					thetald[i][2] = Float.parseFloat(rangeD.getParagraph(i).toString());
+				}
+				*/
+				
 				PrintWriter pw = new PrintWriter("res.txt");
 				pw.println(rangeT.text());
 				pw.println(rangeL.text());
 				pw.println(rangeD.text());
+				
+				pw.println();
+				pw.println();
+				pw.println();
+				
+				for (int i = 0; i < N; i++){
+					pw.println(rangeT.getParagraph(i).text().toString());
+				}
+				
 				pw.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
