@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -123,32 +122,24 @@ public class ReadSource {
 				
 				int N1 = Math.min(rangeT.numParagraphs(), rangeL.numParagraphs());
 				int N2 = Math.min(rangeT.numParagraphs(), rangeD.numParagraphs());
-				N = Math.min(N1, N2);
+				N = Math.min(N1, N2) - 1;
 				
 				thetald = new float[N][3];
 				
-				/*
-				for (int i = 0; i < N; i++){
-					thetald[i][0] = Float.parseFloat(rangeT.getParagraph(i).toString());
-					thetald[i][1] = Float.parseFloat(rangeL.getParagraph(i).toString());
-					thetald[i][2] = Float.parseFloat(rangeD.getParagraph(i).toString());
-				}
-				*/
-				
-				PrintWriter pw = new PrintWriter("res.txt");
-				pw.println(rangeT.text());
-				pw.println(rangeL.text());
-				pw.println(rangeD.text());
-				
-				pw.println();
-				pw.println();
-				pw.println();
+				StringTokenizer tokenT = new StringTokenizer(rangeT.text(), "\r");
+				StringTokenizer tokenL = new StringTokenizer(rangeL.text(), "\r");
+				StringTokenizer tokenD = new StringTokenizer(rangeD.text(), "\r");
 				
 				for (int i = 0; i < N; i++){
-					pw.println(rangeT.getParagraph(i).text().toString());
+					String ss = new String();
+					ss = tokenT.nextToken().trim();
+					thetald[i][0] = Float.parseFloat(ss);
+					ss = tokenL.nextToken().trim();
+					thetald[i][1] = Float.parseFloat(ss);
+					ss = tokenD.nextToken().trim();
+					thetald[i][2] = Float.parseFloat(ss);
 				}
 				
-				pw.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
