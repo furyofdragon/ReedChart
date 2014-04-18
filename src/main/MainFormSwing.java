@@ -87,7 +87,7 @@ public class MainFormSwing {
 		frmReedChart.setBounds(100, 100, 640, 480);
 		frmReedChart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel link = new JLabel("About");
+		JLabel link = new JLabel(Messages.getString("MainFormSwing.link.text")); //$NON-NLS-1$
 		link.setToolTipText(Messages.getString("Main.link.text")); //$NON-NLS-1$
 		link.setEnabled(false);
 		link.setHorizontalAlignment(SwingConstants.CENTER);
