@@ -5,6 +5,8 @@ import java.awt.Color;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+//import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -38,7 +40,16 @@ public class Chart {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(lserie);
 		dataset.addSeries(dserie);
-		JFreeChart chart = ChartFactory.createXYLineChart(null, "theta", "l, d, m", dataset);
+		JFreeChart chart = ChartFactory.createXYLineChart(
+				null,							// chart title
+				"theta",						// x axis label
+				"l, d, m",						// y axis label
+				dataset,						// data
+				PlotOrientation.VERTICAL,		// chart orientation
+				true,							// include legend
+				true,							// tooltips
+				false							// urls
+				);
 		
 		// chart customization
 		// set the background color for the chart
@@ -52,7 +63,9 @@ public class Chart {
 		// zero baseline
 		plot.setRangeZeroBaselineVisible(true);
 		// get axis
-		
+		// change the auto tick unit selection to integer units only...
+		//NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+		//rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 		
 		// visualize
 		ChartPanel chartPanel = new ChartPanel(chart);
