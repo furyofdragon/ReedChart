@@ -49,6 +49,9 @@ public class Chart {
 		plot.setDomainGridlinePaint(Color.black);
 		plot.setRangeGridlinePaint(Color.black);
 		plot.setAxisOffset(new RectangleInsets(0, 0, 0, 0));
+		// zero baseline
+		plot.setRangeZeroBaselineVisible(true);
+		// get axis
 		
 		
 		// visualize
