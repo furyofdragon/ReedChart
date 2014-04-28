@@ -131,7 +131,7 @@ public class MainFormSwing {
 						ReadSource.ReadDataSourceDoc(textInputPath.getText());
 					}
 					else {
-					if (fileExt.equalsIgnoreCase("txt")) {
+					if (fileExt.equalsIgnoreCase("str")) {
 						ReadSource.ReadDataSourceTxt(textInputPath.getText());
 					}
 					}
