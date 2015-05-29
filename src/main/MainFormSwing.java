@@ -25,12 +25,21 @@ import javax.swing.JPanel;
 import chart.Chart;
 
 import java.awt.GridLayout;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 public class MainFormSwing {
 
 	private JFrame frmReedChart;
 	private JTextField textOutputPath;
 	private JTextField textInputPath;
+	private String settingsFile = "settings.ini";
+	private String lastDir;
 	public static JPanel ChartPanel;
 
 	/**
@@ -53,8 +62,40 @@ public class MainFormSwing {
 	 * Create the application.
 	 */
 	public MainFormSwing() {
+		readsettings();
 		initialize();
 		initializeLF();
+	}
+
+	private void readsettings() {
+		// read settings.ini file for lastdir location
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(settingsFile));
+			lastDir = br.readLine();
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			lastDir = "";
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			lastDir = "";
+		}
+	}
+	
+	private void writeSettings() {
+		// write settings.ini file for lastdir location
+		try {
+			PrintWriter pw = new PrintWriter(settingsFile, "UTF-8");
+			pw.write(lastDir);
+			pw.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void initializeLF() {
@@ -119,8 +160,12 @@ public class MainFormSwing {
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".doc", "DOC", "doc"));
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".str", "STR", "str"));
+				fileChooser.setCurrentDirectory(new File(lastDir));
 				int ret = fileChooser.showOpenDialog(fileChooser);
 				if (ret == JFileChooser.APPROVE_OPTION) {
+					lastDir = fileChooser.getCurrentDirectory().toString();
+					writeSettings();
+					
 					String PathString = fileChooser.getSelectedFile().getAbsolutePath();
 					textInputPath.setText(PathString);
 					int i = PathString.lastIndexOf('.');
