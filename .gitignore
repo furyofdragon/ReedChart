@@ -2,3 +2,4 @@ bin
 samples
 dxf
 out
+!out/history.txt
