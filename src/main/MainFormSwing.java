@@ -39,7 +39,7 @@ public class MainFormSwing {
 	private JTextField textOutputPath;
 	private JTextField textInputPath;
 	private String settingsFile = "settings.ini";
-	private String lastDir;
+	private String lastDir = "";
 	public static JPanel ChartPanel;
 
 	/**
@@ -90,31 +90,24 @@ public class MainFormSwing {
 			pw.write(lastDir);
 			pw.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	private void initializeLF() {
-		// TODO Auto-generated method stub
 		// setup System L&F as default
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					//UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (InstantiationException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (UnsupportedLookAndFeelException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	}
