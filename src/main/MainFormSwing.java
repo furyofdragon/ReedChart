@@ -39,7 +39,7 @@ public class MainFormSwing {
 	private JTextField textOutputPath;
 	private JTextField textInputPath;
 	private String settingsFile = "settings.ini";
-	private String lastDir = "";
+	private String lastInputDir = "";
 	public static JPanel ChartPanel;
 
 	/**
@@ -71,15 +71,15 @@ public class MainFormSwing {
 		// read settings.ini file for lastdir location
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(settingsFile));
-			lastDir = br.readLine();
+			lastInputDir = br.readLine();
 			br.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			lastDir = "";
+			lastInputDir = "";
 		}
 		catch (IOException e) {
 			e.printStackTrace();
-			lastDir = "";
+			lastInputDir = "";
 		}
 	}
 	
@@ -87,7 +87,7 @@ public class MainFormSwing {
 		// write settings.ini file for lastdir location
 		try {
 			PrintWriter pw = new PrintWriter(settingsFile, "UTF-8");
-			pw.write(lastDir);
+			pw.write(lastInputDir);
 			pw.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -153,10 +153,10 @@ public class MainFormSwing {
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".doc", "DOC", "doc"));
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".str", "STR", "str"));
-				fileChooser.setCurrentDirectory(new File(lastDir));
+				fileChooser.setCurrentDirectory(new File(lastInputDir));
 				int ret = fileChooser.showOpenDialog(fileChooser);
 				if (ret == JFileChooser.APPROVE_OPTION) {
-					lastDir = fileChooser.getCurrentDirectory().toString();
+					lastInputDir = fileChooser.getCurrentDirectory().toString();
 					writeSettings();
 					
 					String PathString = fileChooser.getSelectedFile().getAbsolutePath();
