@@ -35,13 +35,13 @@ import java.io.UnsupportedEncodingException;
 
 public class MainFormSwing {
 
-	private JFrame frmReedChart;
-	private JTextField textOutputPath;
-	private JTextField textInputPath;
-	private String settingsFile = "settings.ini";
-	private String lastInputDir = "";
-	private String lastOutputDir = "";
-	public static JPanel ChartPanel;
+	private       JFrame     frmReedChart;
+	private       JTextField textOutputPath;
+	private       JTextField textInputPath;
+	private       String     settingsFile = "settings.ini";
+	private       String     lastInputDir = "";
+	private       String     lastOutputDir = "";
+	public static JPanel     ChartPanel;
 
 	/**
 	 * Launch the application.
