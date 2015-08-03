@@ -43,7 +43,7 @@ public class MainFormSwing {
 	private              String     lastOutputDir = "";
 	public  static       JPanel     ChartPanel;
 	//private static final String     LINE_SEPARATOR = "\r\n";
-	private static final String     LINE_SEPARATOR = System.getProperty("line.separator");
+	//private static final String     LINE_SEPARATOR = System.getProperty("line.separator");
 	private static final String     FILE_SEPARATOR = System.getProperty("file.separator");
 
 	/**
@@ -93,10 +93,12 @@ public class MainFormSwing {
 		// write settings.ini file for lastdir location
 		try {
 			PrintWriter pw = new PrintWriter(settingsFile, "UTF-8");
-			pw.write(lastInputDir);
-			pw.write(LINE_SEPARATOR);
-			pw.write(lastOutputDir);
-			pw.write(LINE_SEPARATOR);
+			//pw.write(lastInputDir);
+			//pw.write(LINE_SEPARATOR);
+			//pw.write(lastOutputDir);
+			//pw.write(LINE_SEPARATOR);
+			pw.println(lastInputDir);
+			pw.println(lastOutputDir);
 			pw.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
