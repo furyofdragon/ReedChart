@@ -35,13 +35,14 @@ import java.io.UnsupportedEncodingException;
 
 public class MainFormSwing {
 
-	private       JFrame     frmReedChart;
-	private       JTextField textOutputPath;
-	private       JTextField textInputPath;
-	private       String     settingsFile = "settings.ini";
-	private       String     lastInputDir = "";
-	private       String     lastOutputDir = "";
-	public static JPanel     ChartPanel;
+	private              JFrame     frmReedChart;
+	private              JTextField textOutputPath;
+	private              JTextField textInputPath;
+	private              String     settingsFile = "settings.ini";
+	private              String     lastInputDir = "";
+	private              String     lastOutputDir = "";
+	public  static       JPanel     ChartPanel;
+	private static final String     LINE_SEPARATOR = "\r\n";
 
 	/**
 	 * Launch the application.
@@ -91,6 +92,7 @@ public class MainFormSwing {
 		try {
 			PrintWriter pw = new PrintWriter(settingsFile, "UTF-8");
 			pw.write(lastInputDir);
+			pw.write(LINE_SEPARATOR);
 			pw.write(lastOutputDir);
 			pw.close();
 		} catch (FileNotFoundException e) {
@@ -189,8 +191,12 @@ public class MainFormSwing {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Autocad DXF file", "DXF", "dxf"));
+				fileChooser.setCurrentDirectory(new File(lastOutputDir));
 				int ret = fileChooser.showSaveDialog(fileChooser);
 				if (ret == JFileChooser.APPROVE_OPTION) {
+					lastOutputDir = fileChooser.getCurrentDirectory().toString();
+					writeSettings();
+					
 					String PathString = fileChooser.getSelectedFile().getAbsolutePath();
 					int i = PathString.lastIndexOf('.');
 					int l = PathString.length();
