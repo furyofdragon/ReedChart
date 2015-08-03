@@ -72,7 +72,8 @@ public class MainFormSwing {
 		// read settings.ini file for lastdir location
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(settingsFile));
-			lastInputDir = br.readLine();
+			lastInputDir  = br.readLine();
+			lastOutputDir = br.readLine();
 			br.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -80,7 +81,8 @@ public class MainFormSwing {
 		}
 		catch (IOException e) {
 			e.printStackTrace();
-			lastInputDir = "";
+			lastInputDir  = "";
+			lastOutputDir = "";
 		}
 	}
 	
@@ -89,6 +91,7 @@ public class MainFormSwing {
 		try {
 			PrintWriter pw = new PrintWriter(settingsFile, "UTF-8");
 			pw.write(lastInputDir);
+			pw.write(lastOutputDir);
 			pw.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
