@@ -138,6 +138,10 @@ public class MainFormSwing {
 			public void actionPerformed(ActionEvent e) {
 				WriteDXF.WriteToDXF(textOutputPath.getText());
 				ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXFPressed.text"));
+				
+				lastInputDir  = textInputPath.getText();
+				lastOutputDir = textOutputPath.getText();
+				writeSettings();
 			}
 		});
 		ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXF.text")); //$NON-NLS-1$
