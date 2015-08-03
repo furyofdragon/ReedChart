@@ -40,6 +40,7 @@ public class MainFormSwing {
 	private JTextField textInputPath;
 	private String settingsFile = "settings.ini";
 	private String lastInputDir = "";
+	private String lastOutputDir = "";
 	public static JPanel ChartPanel;
 
 	/**
