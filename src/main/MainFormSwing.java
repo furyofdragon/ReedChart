@@ -94,6 +94,7 @@ public class MainFormSwing {
 			pw.write(lastInputDir);
 			pw.write(LINE_SEPARATOR);
 			pw.write(lastOutputDir);
+			pw.write(LINE_SEPARATOR);
 			pw.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -206,6 +207,8 @@ public class MainFormSwing {
 					else {
 						textOutputPath.setText(PathString + ".dxf");
 					}
+					
+					ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXF.text"));
 				}
 			}
 		});
