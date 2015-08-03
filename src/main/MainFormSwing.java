@@ -42,7 +42,9 @@ public class MainFormSwing {
 	private              String     lastInputDir = "";
 	private              String     lastOutputDir = "";
 	public  static       JPanel     ChartPanel;
-	private static final String     LINE_SEPARATOR = "\r\n";
+	//private static final String     LINE_SEPARATOR = "\r\n";
+	private static final String     LINE_SEPARATOR = System.getProperty("line.separator");
+	private static final String     FILE_SEPARATOR = System.getProperty("file.separator");
 
 	/**
 	 * Launch the application.
@@ -139,8 +141,11 @@ public class MainFormSwing {
 				WriteDXF.WriteToDXF(textOutputPath.getText());
 				ButtonCreateDXF.setText(Messages.getString("Main.ButtonCreateDXFPressed.text"));
 				
-				lastInputDir  = textInputPath.getText();
-				lastOutputDir = textOutputPath.getText();
+				int i;
+				i = textInputPath.getText().lastIndexOf(FILE_SEPARATOR);
+				lastInputDir  = textInputPath.getText().substring(0, i);
+				i = textOutputPath.getText().lastIndexOf(FILE_SEPARATOR);
+				lastOutputDir = textOutputPath.getText().substring(0, i);
 				writeSettings();
 			}
 		});
