@@ -171,7 +171,7 @@ public class MainFormSwing {
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".doc", "DOC", "doc"));
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".str", "STR", "str"));
-				fileChooser.setCurrentDirectory(new File(lastInputDir));
+				if (lastInputDir != null) fileChooser.setCurrentDirectory(new File(lastInputDir));
 				int ret = fileChooser.showOpenDialog(fileChooser);
 				if (ret == JFileChooser.APPROVE_OPTION) {
 					lastInputDir = fileChooser.getCurrentDirectory().toString();
@@ -203,7 +203,7 @@ public class MainFormSwing {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Autocad DXF file", "DXF", "dxf"));
-				fileChooser.setCurrentDirectory(new File(lastOutputDir));
+				if (lastOutputDir != null) fileChooser.setCurrentDirectory(new File(lastOutputDir));
 				int ret = fileChooser.showSaveDialog(fileChooser);
 				if (ret == JFileChooser.APPROVE_OPTION) {
 					lastOutputDir = fileChooser.getCurrentDirectory().toString();
