@@ -13,7 +13,9 @@
 	<classpathentry kind="lib" path="lib/jfreechart/orsonpdf-1.3-eval.jar"/>
 	<classpathentry kind="lib" path="lib/jfreechart/servlet.jar"/>
 	<classpathentry kind="lib" path="lib/jfreechart/swtgraphics2d.jar"/>
-	<classpathentry kind="lib" path="lib/apache-poi/poi-3.10-FINAL-20140208.jar"/>
-	<classpathentry kind="lib" path="lib/apache-poi/poi-scratchpad-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="lib/apache-poi/poi-3.14/poi-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="lib/apache-poi/poi-3.14/poi-ooxml-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="lib/apache-poi/poi-3.14/poi-ooxml-schemas-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="lib/apache-poi/poi-3.14/poi-scratchpad-3.14-20160307.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
