@@ -6,11 +6,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.usermodel.Bookmark;
 import org.apache.poi.hwpf.usermodel.Range;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
 public class ReadSource {
 	
@@ -139,6 +142,29 @@ public class ReadSource {
 					ss = tokenD.nextToken().trim();
 					thetald[i][2] = Float.parseFloat(ss);
 				}
+				fis.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	static void ReadDataSourceDocX(String strFileName) {
+		try {
+			FileInputStream fis=new FileInputStream(strFileName);
+			try {
+				XWPFDocument document = new XWPFDocument(fis);
+				List<XWPFParagraph> paragraphs = document.getParagraphs();
+				
+				System.out.println("Total no of paragraph "+paragraphs.size());
+				for (XWPFParagraph para : paragraphs) {
+					System.out.println(para.getText());
+				}
+				fis.close();
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
