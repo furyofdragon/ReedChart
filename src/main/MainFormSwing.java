@@ -171,6 +171,7 @@ public class MainFormSwing {
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".doc", "DOC", "doc"));
 				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".str", "STR", "str"));
+				fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".docx", "DOCX", "docx"));
 				if (lastInputDir != null) fileChooser.setCurrentDirectory(new File(lastInputDir));
 				int ret = fileChooser.showOpenDialog(fileChooser);
 				if (ret == JFileChooser.APPROVE_OPTION) {
@@ -189,6 +190,9 @@ public class MainFormSwing {
 					else {
 					if (fileExt.equalsIgnoreCase("str")) {
 						ReadSource.ReadDataSourceTxt(textInputPath.getText());
+					}
+					if (fileExt.equalsIgnoreCase("docx")) {
+						ReadSource.ReadDataSourceDocX(textInputPath.getText());
 					}
 					}
 					
